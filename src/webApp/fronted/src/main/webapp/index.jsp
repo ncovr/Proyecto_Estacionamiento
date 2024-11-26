@@ -7,16 +7,17 @@
 </head>
 <body>
 <h1>Datos clientes</h1>
-<form action="procesarFormulario.jsp" method="post">
+<form action="servlets" method="post">
     <p>
         <label for="rut">Rut:</label>
         <input type="text" id="rut" name="rut">
     </p>
     <p>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password">
+        <input type="text" id="password" name="password">
     </p>
     <button type="submit">Enviar</button>
 </form>
+
 </body>
 </html>
