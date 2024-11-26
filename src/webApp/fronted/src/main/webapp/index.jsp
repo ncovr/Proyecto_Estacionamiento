@@ -8,6 +8,7 @@
         button:hover { background: #57c26e; }
     </style>
 </head>
+
 <body>
 <h1>Menu</h1>
 <form action="pedido.jsp" method="post">
