@@ -1,26 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.Arrays" %>
-<%@ page import="com.sun.net.httpserver.Request" %>
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>Pedido Confirmado</title>
+    <meta charset="UTF-8">
+    <title>Menú Detallado</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .content { text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; background: #3498db; color: white; border: none; cursor: pointer; }
+        button:hover { background: #2980b9; }
+    </style>
 </head>
 <body>
-<h1>Resumen del Pedido</h1>
-<%
-    String[] comidas = request.getParameter("comida");
-
-    if (comidas != null) {
-        System.out.println("<p>Has pedido:</p>");
-        System.out.println("<ul>");
-        for (String comida : comidas) {
-            System.out.println("<li>" + comida + "</li>");
-        }
-        System.out.println("</ul>");
-    } else {
-        System.out.println("<p>No has seleccionado ningún producto.</p>");
-    }
-%>
-<a href="index.jsp">Volver al Menú</a>
+<div class="content">
+    <h1>Bienvenido al Menú Detallado</h1>
+    <p>Aquí podrás explorar más opciones de comida y realizar tus pedidos.</p>
+    <button onclick="window.location.href='index.jsp'">Volver al Inicio</button>
+</div>
 </body>
 </html>

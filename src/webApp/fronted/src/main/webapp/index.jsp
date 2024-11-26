@@ -110,6 +110,8 @@
 
         <button type="submit">Realizar Pedido</button>
     </form>
+    <br>
+    <button onclick="window.location.href='pedido.jsp'">Ir al menu detallado</button>
 </div>
 
 <div class="footer">
