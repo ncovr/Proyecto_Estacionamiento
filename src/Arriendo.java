@@ -4,23 +4,39 @@ import java.time.LocalDateTime;
 public class Arriendo {
     private LocalDateTime inicio;
     private LocalDateTime fin;
+    private String patente;
     private int idPlaza;
 
-    public Arriendo(int idPlaza) {
+    public Arriendo(int idPlaza, String patente) {
+        this.patente = patente;
         this.idPlaza = idPlaza;
         this.inicio = LocalDateTime.now();
     }
 
     void cancelarArriendo() {
-
+        this.fin = LocalDateTime.now();
     }
 
     // Calcula el precio del arriendo
     int calcularPrecio(int tarifaMinuto){
-        return (int) Duration.between(inicio, fin).toMinutes() * tarifaMinuto;
+        return (int) Duration.between(inicio, LocalDateTime.now()).toMinutes() * tarifaMinuto;
+    }
+
+    String getEstado(){
+        if (this.fin == null) return "En curso";
+        return "Terminado";
     }
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
+
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
 
     public LocalDateTime getInicio() {
         return inicio;

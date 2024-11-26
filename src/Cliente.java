@@ -1,29 +1,41 @@
 import java.util.ArrayList;
 
 public class Cliente {
-    private String patente;
     private String nombre;
     private String telefono;
-    private ArrayList<Arriendo> arriendos;
+    private ArrayList<Arriendo> arriendos = new ArrayList();
 
-    public Cliente(String patente, String nombre, String telefono) {
-        this.patente = patente;
+    public Cliente(String nombre, String telefono) {
         this.nombre = nombre;
         this.telefono = telefono;
     }
 
-    void registrarArriendo(int idPlaza){
-        arriendos.add(new Arriendo(idPlaza));
+    void registrarArriendo(int idPlaza, String patente){
+        arriendos.add(new Arriendo(idPlaza, patente));
     }
 
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
-    public String getPatente() {
-        return patente;
+    // Retorna el Arriendo que esté activo
+    public Arriendo getArriendoActivo(String patente){
+        // Un cliente puede tener registros de muchos arriendos, por lo que se retorna el que esté activo
+        for (Arriendo ar : arriendos) {
+            if (ar.getFin() == null && ar.getPatente().equals(patente)) {
+                return ar;
+            }
+        }
+        return null;
     }
 
-    public void setPatente(String patente) {
-        this.patente = patente;
+    // Retorna un arreglo en donde cada posición se almacena un Arriendo, esté activo o inactivo
+    String[] getArriendos(){
+        String[] arr = new String[arriendos.size()];
+        Arriendo a;
+        for (int i = 0; i < arriendos.size(); i++) {
+            a = arriendos.get(i);
+            arr[i] = a.getPatente()+/*", "+a.getEstado()+*/", "+a.getFin();
+        }
+        return arr;
     }
 
     public String getNombre() {

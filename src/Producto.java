@@ -1,19 +1,21 @@
 public class Producto {
-    private int codigo;
+    private String codigo;
     private String nombre;
     private int costo;
+    private int cantidad;
 
-    public Producto(int codigo, String nombre, int costo) {
+    public Producto(String codigo, String nombre, int costo, int cantidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.costo = costo;
+        this.cantidad = cantidad;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

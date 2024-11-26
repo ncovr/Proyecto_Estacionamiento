@@ -3,44 +3,154 @@ import java.util.ArrayList;
 public class Sistema {
     private boolean[] plazas;
     private final int tarifaMinuto;
-    ArrayList<Cliente> clientes;
-    ArrayList<Pedido> pedidos;
-    Inventario inventario;
-    Sistema instance;
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private Inventario inventario = new Inventario();
+    private static Sistema instance;
 
-    Sistema() {
-        if (instance == null) {
-            instance = new Sistema();
-        }
-
+    private Sistema() {
         plazas = new boolean[10];
         tarifaMinuto = 10;
     }
 
-    // Retorna la primera plaza que encuentre disponible
-    int disponible(){
+    static Sistema getInstance() {
+        if (instance == null) {
+            instance = new Sistema();
+        }
+        return instance;
+    }
+
+    // Retorna el índice de la primera plaza que encuentre disponible
+    int disponible() {
         for (int i = 0; i < plazas.length; i++) {
             if (!plazas[i]) {
-                return i+1;
+                return i;
             }
         }
-        return 0; // 0: no hay espacio
+        return -1; // 0: no hay espacio
     }
 
-    void arrendar(String patente, String nombre){
-        // Asigna un vehiculo en la primera plaza disponible que encuentre
-        int plaza = disponible();
+    // Asigna un vehiculo en la primera plaza disponible que encuentre
+    void arrendar(String patente, String nombre, String telefono) {
+        // Se crea un cliente y luego se busca si existe en el sistema
+        Cliente c = new Cliente(nombre, telefono);
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombre().equals(nombre) && cliente.getTelefono().equals(telefono)) {
+                c = cliente;
+                clientes.remove(cliente);
+                break;
+            }
+        }
+
+        // Se registra el arriendo y se almacena al cliente en el sistema
+        c.registrarArriendo(disponible(), patente);
+        plazas[disponible()] = true;
+        clientes.add(c);
     }
 
-    void desarrendar(String patente, String nombre){
+    void consultarArriendos(String patente, String nombre) {
+        String[] arr = null;
+
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombre().equals(nombre)) {
+                arr = cliente.getArriendos();
+                break;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println();
+
 
     }
 
-    void ingresarPedido(){
+    int calcularPrecio(String patente, String nombre) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombre().equals(nombre)) {
+                return cliente.getArriendoActivo(patente).calcularPrecio(10);
+            }
+        }
+        return 0;
+    }
+
+    void desarrendar(String patente, String nombre) {
+        // Busca al cliente en sistema para desarrendar
+        int idPlaza = -1;
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombre().equals(nombre)) {
+                idPlaza = cliente.getArriendoActivo(patente).getIdPlaza();
+                cliente.getArriendoActivo(patente).cancelarArriendo();
+            }
+        }
+
+        if (idPlaza != -1) {
+            plazas[idPlaza] = false;
+        }
 
     }
 
-    void editarPersonal(){
+    // Comida Rapida _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+    //Determina un codigo único para un pedido
+    private int codificar() {
+        if (pedidos.isEmpty()) {
+            return 1;
+        }
+        return pedidos.indexOf(pedidos.getLast()) + 2;
+    }
+
+    String ingresarPedido(ArrayList<String> codigos) {
+        Pedido pedido = new Pedido(codificar(), codigos);
+        pedido.setValor(inventario.calcularValor(codigos));
+        pedidos.add(pedido);
+        return pedido.getSerial();
+    }
+
+    void cancelarPedido(String serial) {
+        if (pedidos.isEmpty()) {
+            System.out.println("No registran pedidos");
+            return;
+        }
+
+        for (Pedido pedido : pedidos) {
+            if (pedido.getSerial().equals(serial)) {
+                pedidos.remove(pedido);
+                return;
+            }
+        }
+    }
+
+    void mostrarPedidos() {
+        if (pedidos.isEmpty()) {
+            System.out.println("No registran pedidos");
+        }
+
+        for (Pedido pedido : pedidos) {
+            System.out.println(pedido.getSerial() + " por: " + pedido.getValor());
+        }
+    }
+
+    // Ingresa productos al inventario
+    void addProductoInventario(String codigo, String nombre, int costo, int cantidad) {
+        inventario.agregarProducto(codigo, nombre, costo, cantidad);
+    }
+
+    // Recoge datos del pedido y el detalle de los productos para luego generar una boleta
+    void boletaPedido(int serial) {
+        ArrayList<String> datos = new ArrayList<>();
+        if (!pedidos.isEmpty()) {
+            for (Pedido pedido : pedidos) {
+                if (pedido.getSerial().equals(serial)) {
+                    datos.addAll(pedido.getDatos());
+                }
+            }
+        }
+
+    }
+
+    void editarPersonal() {
 
     }
 
