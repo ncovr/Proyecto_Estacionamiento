@@ -20,6 +20,9 @@
             justify-content: center; /* Alineación horizontal */
             align-items: center; /* Alineación vertical */
             flex-direction: column;
+            background-image: url('img/fondo3.jpg'); /* Cambia la ruta de la imagen aquí */
+            background-size: cover; /* Hace que la imagen cubra todo el fondo */
+            background-position: center; /* Centra la imagen */
         }
 
         /* Título principal */
@@ -37,7 +40,7 @@
             left: 10px;
             width: 40px;
             height: 40px;
-            background-color: #424949;
+            background-color: rgba(66, 73, 73, 0.39);
             color: white;
             border: none;
             border-radius: 50%;
@@ -57,7 +60,7 @@
         /* Barra lateral gris */
         .sidebar {
             width: 250px;
-            background-color: #808080;
+            background-color: #10100e;
             height: 100%;
             position: fixed;
             top: 0;
@@ -94,7 +97,7 @@
         }
 
         .sidebar button:hover {
-            background-color: #333;
+            background-color: #6bc47e;
         }
 
         /* Remueve subrayado en enlaces */
@@ -207,6 +210,6 @@
         mainContent.classList.toggle('active');
     }
 </script>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
