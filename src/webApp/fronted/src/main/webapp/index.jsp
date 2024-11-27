@@ -38,6 +38,20 @@
             padding: 0;
             position: relative;
             z-index: 10;
+            opacity: 0;  /* Inicialmente invisible */
+            animation: slideIn 1s forwards;  /* Animación de entrada */
+        }
+
+        /* Animación de entrada para el bloque */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .login-form {
@@ -70,6 +84,7 @@
             border: 1px solid #202424; /* Color del borde por defecto */
             font-size: 18px;
             box-sizing: border-box;
+            color: white;
         }
 
         /* Cambiar el color de fondo para los campos de texto */
@@ -94,7 +109,7 @@
         }
 
         .form-group input[type="submit"] {
-            background-color: #141515;
+            background-color: rgba(66, 73, 73, 0.39);
             color: white;
             cursor: pointer;
             border: none;
@@ -102,17 +117,48 @@
             padding: 15px;
             border-radius: 8px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra añadida al botón */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra añadida al botón */
+            transition: all 0.4s ease-out;
         }
 
         .form-group input[type="submit"]:hover {
             background-color: #e27f42;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer hover */
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al hacer hover */
+        }
+        .form-group input[type="submit"]:active {
+            transform: scale(1); /* Vuelve al tamaño original cuando se hace clic */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Restaura la sombra */
         }
 
         .form-group .error {
             color: red;
             font-size: 16px;
+        }
+
+        /* Estilo para el botón "Crear Cuenta" */
+        .form-group .create-account {
+            background-color: rgba(66, 73, 73, 0.39);
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra añadida al botón */
+            transition: all 0.4s ease-out;
+        }
+
+        .form-group .create-account:hover {
+            background-color: #e27f42;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al hacer hover */
+        }
+
+        .form-group .create-account:active {
+            transform: scale(1); /* Vuelve al tamaño original cuando se hace clic */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Restaura la sombra */
         }
 
     </style>
@@ -138,6 +184,10 @@
                 <input type="submit" value="Iniciar Sesión">
             </div>
         </form>
+        <!-- Botón "Crear Cuenta" -->
+        <div class="form-group">
+            <button class="create-account">Crear Cuenta</button>
+        </div>
     </div>
 </div>
 
