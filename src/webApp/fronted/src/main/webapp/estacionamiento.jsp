@@ -100,6 +100,9 @@
             margin-top: 20px; /* Ajuste de margen superior */
             max-width: 800px; /* Limita el tamaño del contenido */
             padding: 20px;
+            display: flex; /* Usamos Flexbox */
+            justify-content: center; /* Centra los botones */
+            gap: 20px; /* Espacio entre los botones */
         }
 
         p {
@@ -116,6 +119,7 @@
             font-size: 16px;
             background-color: #424949;
             color: white;
+            margin: 2rem auto;
             border: none;
             border-radius: 25px; /* Bordes suavizados */
             cursor: pointer;
@@ -128,7 +132,7 @@
         }
 
         .square-btn i {
-            margin-bottom: 100px; /* Espacio entre el icono y el texto */
+            margin-bottom: 10px; /* Espacio entre el icono y el texto */
         }
 
         .square-btn:hover {
@@ -160,9 +164,27 @@
 <div class="main-content" id="main-content">
     <!-- Botón cuadrado con bordes suaves -->
     <button class="square-btn">
-        <!-- Icono encima del texto -->
-        <img src="img/consultar.png" alt="Icono de consulta" style="width: 20px; height: 20px;">
+        <!-- Icono al lado del texto -->
+        <img src="img/consultar.png" alt="Icono de consulta" style="width: 20px; height: 20px; margin-right: 10px;">
         Consultar Disponibilidad
+    </button>
+    <!-- Otro botón cuadrado con bordes suaves -->
+    <button class="square-btn">
+        <!-- Icono al lado del texto -->
+        <img src="img/estacionamiento.png" alt="Icono de Asignar Espacio" style="width: 20px; height: 20px; margin-right: 10px;">
+        Asignar Espacio
+    </button>
+    <!-- Nuevo botón cuadrado con bordes suaves -->
+    <button class="square-btn">
+        <!-- Icono al lado del texto -->
+        <img src="img/duracion.png" alt="Icono de registrar duración" style="width: 20px; height: 20px; margin-right: 10px;">
+        Registrar Duración
+    </button>
+    <!-- Botón "Procesar pago" con las mismas características -->
+    <button class="square-btn">
+        <!-- Icono al lado del texto -->
+        <img src="img/pago.png" alt="Icono de procesar pago" style="width: 20px; height: 20px; margin-right: 10px;">
+        Procesar Pago
     </button>
 </div>
 
