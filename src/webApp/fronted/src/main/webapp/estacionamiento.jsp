@@ -22,6 +22,14 @@
             flex-direction: column;
         }
 
+        /* Título principal */
+        h1 {
+            font-size: 2.5rem;
+            color: #424949;
+            margin-top: 20px;
+            text-align: center;
+        }
+
         /* Botón para mostrar la barra lateral */
         .toggle-btn {
             position: absolute;
@@ -143,6 +151,9 @@
     </style>
 </head>
 <body>
+
+<!-- Título -->
+<h1>Estacionamiento</h1>
 
 <!-- Botón de alternar -->
 <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
