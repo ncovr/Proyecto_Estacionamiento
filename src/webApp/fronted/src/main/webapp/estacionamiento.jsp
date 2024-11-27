@@ -14,18 +14,19 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             background-color: white;
-            height: 100vh; /* Altura completa de la ventana */
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            height: 100vh;
+            overflow-x: hidden;
             display: flex;
-            justify-content: center; /* Centra el contenido horizontalmente */
-            align-items: center; /* Centra el contenido verticalmente */
+            justify-content: center; /* Alineación horizontal */
+            align-items: center; /* Alineación vertical */
+            flex-direction: column;
         }
 
         /* Botón para mostrar la barra lateral */
         .toggle-btn {
             position: absolute;
             top: 10px;
-            left: 10px; /* Mantener en la esquina superior izquierda */
+            left: 10px;
             width: 40px;
             height: 40px;
             background-color: #424949;
@@ -38,7 +39,7 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            z-index: 1000; /* Asegura que esté sobre la barra lateral */
+            z-index: 1000;
         }
 
         .toggle-btn:hover {
@@ -48,22 +49,22 @@
         /* Barra lateral gris */
         .sidebar {
             width: 250px;
-            background-color: #808080; /* Color gris */
+            background-color: #808080;
             height: 100%;
             position: fixed;
             top: 0;
-            left: -250px; /* Fuera de la vista inicialmente */
+            left: -250px;
             display: flex;
-            flex-direction: column; /* Organiza los botones en columna */
-            align-items: center; /* Centra horizontalmente */
-            padding-top: 60px; /* Espacio superior para que no se superponga con el botón */
-            gap: 15px; /* Espaciado entre botones */
-            transition: all 0.3s ease; /* Animación suave */
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px;
+            gap: 15px;
+            transition: all 0.3s ease;
             box-shadow: 5px 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar.active {
-            left: 0; /* Muestra la barra lateral */
+            left: 0;
         }
 
         /* Botones de la barra lateral */
@@ -95,23 +96,45 @@
 
         /* Contenido principal */
         .main-content {
-            text-align: center; /* Centra el texto horizontalmente */
-        }
-
-        .centered-content {
-            max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+            text-align: center;
+            margin-top: 20px; /* Ajuste de margen superior */
+            max-width: 800px; /* Limita el tamaño del contenido */
             padding: 20px;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
         }
 
         p {
             color: #666;
             font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Nuevo botón cuadrado con bordes suaves */
+        .square-btn {
+            padding: -10px;
+            width: 110px;
+            height: 110px;
+            font-size: 16px;
+            background-color: #424949;
+            color: white;
+            border: none;
+            border-radius: 25px; /* Bordes suavizados */
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column; /* Asegura que el icono esté arriba */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .square-btn i {
+            margin-bottom: 100px; /* Espacio entre el icono y el texto */
+        }
+
+        .square-btn:hover {
+            background-color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
         }
     </style>
 </head>
@@ -135,10 +158,12 @@
 
 <!-- Contenido principal -->
 <div class="main-content" id="main-content">
-    <div class="centered-content">
-        <h1>Bienvenido al Estacionamiento</h1>
-        <p>Aquí puedes gestionar la funcionalidad del estacionamiento.</p>
-    </div>
+    <!-- Botón cuadrado con bordes suaves -->
+    <button class="square-btn">
+        <!-- Icono encima del texto -->
+        <img src="img/consultar.png" alt="Icono de consulta" style="width: 20px; height: 20px;">
+        Consultar Disponibilidad
+    </button>
 </div>
 
 <script>
