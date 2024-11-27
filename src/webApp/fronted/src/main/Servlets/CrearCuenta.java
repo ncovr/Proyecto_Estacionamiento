@@ -1,5 +1,7 @@
 package webApp.fronted.src.main.Servlets;
 
+import main.Sistema;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,9 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "CrearCuenta", urlPatterns = {"/CrearCuenta"})
+public class CrearCuenta extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -26,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         boolean isRegistered = registrarUsuario(username, password);
         if (isRegistered) {
             // Redirigir al login o a otra página si el registro es exitoso
-            response.sendRedirect("pedido.jsp");
+            response.sendRedirect("pedido.jsp");//CAMBIAR
         } else {
             // Mostrar un mensaje de error si ocurre algún problema
             request.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");
@@ -35,7 +36,10 @@ public class LoginServlet extends HttpServlet {
     }
     //logica del programa
 
-    private boolean registrarUsuario(String usernamer,String password){
-        return true ;
+    private boolean registrarUsuario(String usernamer, String password) {
+        return true;
     }
+
 }
+
+

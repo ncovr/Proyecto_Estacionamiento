@@ -174,7 +174,7 @@
         <h2>Iniciar Sesión</h2>
         <form action="LoginServlet" method="post">
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Nombre" required>
+                <input type="text" id="username" name="username" placeholder="Rut" required>
                 <span class="error">${errorUsername}</span>
             </div>
             <div class="form-group">
@@ -185,9 +185,12 @@
                 <input type="submit" value="Iniciar Sesión">
             </div>
         </form>
-        <!-- Botón "Crear Cuenta" con las mismas características que el botón "Iniciar Sesión" -->
+
+        <!-- Botón "Crear Cuenta" que redirige a CrearCuenta.jsp -->
         <div class="form-group">
-            <button class="create-account">Crear Cuenta</button>
+            <a href="CrearCuenta.jsp">
+                <button class="create-account">Crear Cuenta</button>
+            </a>
         </div>
     </div>
 </div>
