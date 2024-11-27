@@ -67,7 +67,7 @@
             width: 100%;
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #424949;
+            border: 1px solid #202424; /* Color de los recuadros actualizado */
             font-size: 18px;
             box-sizing: border-box;
         }
@@ -78,7 +78,7 @@
         }
 
         .form-group input[type="submit"] {
-            background-color: #343a3a;
+            background-color: #141515;
             color: white;
             cursor: pointer;
             border: none;
@@ -89,7 +89,7 @@
         }
 
         .form-group input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #e27f42  ;
         }
 
         .form-group .error {
@@ -115,4 +115,13 @@
             <div class="form-group">
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <span class="error">${errorPassword}</span>
-                </d
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Iniciar Sesión">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
