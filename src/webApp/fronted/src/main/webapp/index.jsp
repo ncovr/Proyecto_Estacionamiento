@@ -188,7 +188,7 @@
 
         <!-- Botón "Crear Cuenta" que redirige a CrearCuenta.jsp -->
         <div class="form-group">
-            <a href="CrearCuenta.jsp">
+            <a href="estacionamiento.jsp">
                 <button class="create-account">Crear Cuenta</button>
             </a>
         </div>

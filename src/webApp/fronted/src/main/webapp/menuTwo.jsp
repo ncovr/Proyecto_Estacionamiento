@@ -190,7 +190,7 @@
     <div class="login-form">
         <h2>Menú Principal</h2>
         <div class="form-group">
-            <a href="CrearCuenta">
+            <a href="estacionamiento.jsp">
                 <button class="create-account">Estacionamiento</button>
             </a>
         </div>
