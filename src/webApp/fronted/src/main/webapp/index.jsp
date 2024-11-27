@@ -5,21 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iniciar sesion</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Calibri',cursive, sans-serif;
+            font-family: 'Calibri', cursive, sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative; /* Necesario para que el fondo se ubique correctamente */
+            position: relative;
         }
 
-        /* Capa de fondo difuminado */
         .background {
             position: absolute;
             top: 0;
@@ -29,8 +28,8 @@
             background-image: url('img/fondo.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(2px); /* Difumina solo la imagen de fondo */
-            z-index: -1; /* Coloca el fondo por debajo del contenido */
+            filter: blur(2px);
+            z-index: -1;
         }
 
         .container {
@@ -42,7 +41,7 @@
         }
 
         .login-form {
-            background-color: rgb(66, 73, 73); /* Fondo blanco semi-transparente */
+            background-color: rgb(66, 73, 73);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -51,7 +50,7 @@
         .login-form h2 {
             text-align: center;
             margin-bottom: 30px;
-            color: white; /* Cambié el color del título a blanco */
+            color: white;
         }
 
         .form-group {
@@ -68,9 +67,14 @@
             width: 100%;
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #424949; /* Color actualizado */
+            border: 1px solid #424949;
             font-size: 18px;
             box-sizing: border-box;
+        }
+
+        /* Estilo para los placeholders */
+        .form-group input::placeholder {
+            color: #A9A9A9;
         }
 
         .form-group input[type="submit"] {
@@ -105,21 +109,10 @@
         <h2>Log in</h2>
         <form action="LoginServlet" method="post">
             <div class="form-group">
-                <label for="username">Nombre:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="Nombre" required>
                 <span class="error">${errorUsername}</span>
             </div>
             <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <span class="error">${errorPassword}</span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Iniciar Sesión">
-            </div>
-        </form>
-    </div>
-</div>
-
-</body>
-</html>
+                </d
