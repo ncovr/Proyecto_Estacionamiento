@@ -109,7 +109,7 @@
         }
 
         .form-group input[type="submit"] {
-            background-color: rgba(66, 73, 73, 0.39);
+            background-color: #141515;
             color: white;
             cursor: pointer;
             border: none;
@@ -117,19 +117,18 @@
             padding: 15px;
             border-radius: 8px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra añadida al botón */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra añadida al botón */
             transition: all 0.4s ease-out;
         }
 
         .form-group input[type="submit"]:hover {
             background-color: #e27f42;
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al hacer hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer hover */
         }
-
         .form-group input[type="submit"]:active {
             transform: scale(1); /* Vuelve al tamaño original cuando se hace clic */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Restaura la sombra */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Restaura la sombra */
         }
 
         .form-group .error {
@@ -139,7 +138,7 @@
 
         /* Estilo para el botón "Crear Cuenta" */
         .form-group .create-account {
-            background-color: rgba(66, 73, 73, 0.39);
+            background-color: #424949;
             color: white;
             cursor: pointer;
             border: none;
@@ -147,14 +146,14 @@
             padding: 15px;
             border-radius: 8px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra añadida al botón */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra añadida al botón */
             transition: all 0.4s ease-out;
         }
 
         .form-group .create-account:hover {
             background-color: #e27f42;
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al hacer hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer hover */
         }
 
         .form-group .create-account:active {
@@ -185,9 +184,9 @@
                 <input type="submit" value="Iniciar Sesión">
             </div>
         </form>
-        <!-- Botón "Crear Cuenta" con las mismas características que el botón "Iniciar Sesión" -->
+        <!-- Botón "Crear Cuenta" -->
         <div class="form-group">
-            <button class="create-account">Crear Cuenta</button>
+            <button class="create-account" onclick="window.location.href='crear-cuenta.html'">Crear Cuenta</button>
         </div>
     </div>
 </div>
