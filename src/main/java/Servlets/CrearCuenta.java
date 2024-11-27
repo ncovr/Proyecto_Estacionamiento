@@ -25,7 +25,7 @@ public class CrearCuenta extends HttpServlet {
         boolean isRegistered = registrarUsuario(username, password);
         if (isRegistered) {
             // Redirigir al login o a otra página si el registro es exitoso
-            response.sendRedirect("menuTwo.jsp");//CAMBIAR
+            response.sendRedirect("menuPrincipal.jsp");//CAMBIAR
         } else {
             // Mostrar un mensaje de error si ocurre algún problema
             request.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");
@@ -35,7 +35,7 @@ public class CrearCuenta extends HttpServlet {
     //logica del programa
 
     private boolean registrarUsuario(String usernamer, String password) {
-        return false;
+        return true;
     }
 
 }

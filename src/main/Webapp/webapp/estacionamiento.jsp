@@ -157,19 +157,22 @@
 
 <!-- Título -->
 <h1>Estacionamiento</h1>
+<h3 style="color: #687272; font-size: 1.4rem; margin-top: -20px; text-align: center;">
+    Funcionalidades
+</h3>
 
 <!-- Botón de alternar -->
 <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
 <!-- Barra lateral -->
 <div class="sidebar" id="sidebar">
-    <a href="menu.jsp">
+    <a href="menuP.jsp">
         <button>Tomar Pedido</button>
     </a>
     <a href="index.jsp">
         <button>Cerrar Sesión</button>
     </a>
-    <a href="menuTwo.jsp">
+    <a href="menuPrincipal.jsp">
         <button>Volver</button>
     </a>
 </div>

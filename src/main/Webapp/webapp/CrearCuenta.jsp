@@ -187,7 +187,7 @@
         </form>
         <!-- Botón "Crear Cuenta" -->
         <div class="form-group">
-            <a href="index.jsp">
+            <a href="menuPrincipal.jsp">
                 <button class="create-account">Volver</button>
             </a>
         </div>
