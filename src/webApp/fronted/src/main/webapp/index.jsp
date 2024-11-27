@@ -67,14 +67,30 @@
             width: 100%;
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #202424; /* Color de los recuadros actualizado */
+            border: 1px solid #202424; /* Color del borde por defecto */
             font-size: 18px;
             box-sizing: border-box;
         }
 
+        /* Cambiar el color de fondo para los campos de texto */
+        #username, #password {
+            background-color: #424949; /* Color de fondo para el campo de nombre y contraseña */
+        }
+
         /* Estilo para los placeholders */
         .form-group input::placeholder {
-            color: #A9A9A9;
+            color: #ffffff; /* Color del placeholder por defecto */
+        }
+
+        /* Estilo para los placeholders cuando el campo está enfocado */
+        .form-group input:focus::placeholder {
+            color: #ff7f50; /* Cambiar color del placeholder cuando el campo está enfocado */
+        }
+
+        /* Estilo cuando los campos están enfocados */
+        .form-group input:focus {
+            outline: none; /* Elimina el borde azul predeterminado del navegador */
+            border: 1px solid #ff7f50; /* Cambiar el borde cuando el campo está enfocado */
         }
 
         .form-group input[type="submit"] {
@@ -86,10 +102,12 @@
             padding: 15px;
             border-radius: 8px;
             width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra añadida al botón */
         }
 
         .form-group input[type="submit"]:hover {
-            background-color: #e27f42  ;
+            background-color: #e27f42;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer hover */
         }
 
         .form-group .error {
@@ -106,7 +124,7 @@
 
 <div class="container">
     <div class="login-form">
-        <h2>Log in</h2>
+        <h2>Iniciar Sesión</h2>
         <form action="LoginServlet" method="post">
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Nombre" required>
