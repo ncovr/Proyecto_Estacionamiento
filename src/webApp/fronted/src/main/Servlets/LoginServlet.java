@@ -19,14 +19,14 @@ public class LoginServlet extends HttpServlet {
         System.out.println("nombre " + username + " password " + password);
         data.put(username, password);//key-value
         if (data.containsKey(username) && data.containsValue(password)) {
-            System.out.println("data save");
+            System.out.println("INICIAR SESION data save");
         } else {
             System.out.println("error");
         }
         boolean isRegistered = registrarUsuario(username, password);
         if (isRegistered) {
             // Redirigir al login o a otra página si el registro es exitoso
-            response.sendRedirect("pedido.jsp");
+            response.sendRedirect("menuTwo.jsp");
         } else {
             // Mostrar un mensaje de error si ocurre algún problema
             request.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");

@@ -20,7 +20,7 @@ public class CrearCuenta extends HttpServlet {
         System.out.println("nombre " + username + " password " + password);
         data.put(username, password);//key-value
         if (data.containsKey(username) && data.containsValue(password)) {
-            System.out.println("data save");
+            System.out.println("CREAR CUENTA data save");
         } else {
             System.out.println("error");
         }
