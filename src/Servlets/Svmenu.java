@@ -23,8 +23,7 @@ public class Svmenu extends HttpServlet {
         for (String key : menu.keySet()) {
             System.out.println( key + ", cantidad :" + menu.get(key));
         }
-
-
         resp.sendRedirect("menuPrincipal.jsp");
+        System.out.println("");
     }
 }

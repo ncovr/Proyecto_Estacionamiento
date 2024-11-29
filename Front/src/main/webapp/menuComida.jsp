@@ -131,28 +131,70 @@
         }
 
         button {
-            padding: 10px 20px;
+            padding: 10px 20px; /* Ajusta el tamaño según el texto */
             background-color: #10100e;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 18px;
-            margin-top: 20px;
+            margin-top: 10px;
+            /* Elimina el ancho fijo para que el tamaño se ajuste al texto */
+            width: auto;
+            display: inline-block; /* Asegura que el botón no se expanda innecesariamente */
+            text-align: center; /* Asegura que el texto esté centrado */
         }
 
         button:hover {
             background-color: #e27f42;
         }
 
+
         /* Estilo para los inputs de cantidad */
+        .quantity-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;  /* Añadir espacio entre la imagen y el input */
+        }
+
         .quantity-input {
             width: 50px;
             padding: 5px;
             text-align: center;
             border-radius: 5px;
             border: 1px solid #ddd;
+            font-size: 16px;
         }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Espacio entre los botones */
+            margin-top: 10px;
+            width: 100%; /* Asegura que el contenedor de los botones ocupe todo el ancho */
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .volver-btn {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            width: 100%;
+            background-color: #10100e;
+            color: white;
+            outline: none;
+            text-decoration: none; /* Quita el subrayado */
+            border: none;
+        }
+
+        .volver-btn:hover {
+            background-color: #e27f42;
+            outline: none;
+        }
+
     </style>
 </head>
 
@@ -166,49 +208,67 @@
         <i class="fas fa-shopping-cart header-icon"></i>
     </header>
 
-
     <form action="Svmenu" method="post">
         <div class="menu">
             <div class="menu-item">
                 <label>Completo</label>
                 <div class="price">$2,100</div>
                 <img src="img/completo.jpg" alt="Completo" class="menu-item-image">
-                <input type="number" name="completoCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="completoCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
             <div class="menu-item">
                 <label>Hamburguesa</label>
                 <div class="price">$2,500</div>
                 <img src="img/hamburguesa.jpg" alt="Hamburguesa" class="menu-item-image">
-                <input type="number" name="hamburguesaCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="hamburguesaCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
             <div class="menu-item">
                 <label>Pizza</label>
                 <div class="price">$7,000</div>
                 <img src="img/pizza.png" alt="Pizza" class="menu-item-image">
-                <input type="number" name="pizzaCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="pizzaCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
             <div class="menu-item">
                 <label>Papas Fritas</label>
                 <div class="price">$1,500</div>
                 <img src="img/papas_fritas.jpg" alt="Papas Fritas" class="menu-item-image">
-                <input type="number" name="papasFritasCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="papasFritasCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
             <div class="menu-item">
                 <label>Sushi</label>
                 <div class="price">$2,800</div>
                 <img src="img/sushi.jpg" alt="Sushi" class="menu-item-image">
-                <input type="number" name="sushiCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="sushiCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
             <div class="menu-item">
                 <label>Bowl</label>
                 <div class="price">$2,500</div>
                 <img src="img/bowl.jpg" alt="Bowl" class="menu-item-image">
-                <input type="number" name="bowlCantidad" min="0" value="0">
+                <div class="quantity-container">
+                    <input type="number" name="bowlCantidad" min="0" value="0" class="quantity-input">
+                </div>
             </div>
         </div>
 
-        <button type="submit">Realizar Pedido</button>
+        <div class="button-container">
+            <a href="menuPrincipal.jsp">
+                <button type="button" class="volver-btn">Volver</button>
+            </a>
+
+            <button type="submit">Realizar Pedido</button>
+        </div>
     </form>
 </div>
+
 </body>
 </html>
