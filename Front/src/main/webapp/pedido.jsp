@@ -118,6 +118,40 @@
         .cantidad-total .total {
             margin-top: 30px; /* Ajustar la posición de "Total" */
         }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(26, 26, 26, 0.98);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s forwards;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para la escala y color de fondo */
+        }
+
+        /* Animación de aparición */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efecto hover: cambio de color y aumento de tamaño */
+        .back-button:hover {
+            background-color: #e27f42;
+            transform: scale(1.1); /* Escala el botón cuando pasa el cursor */
+        }
     </style>
 </head>
 <body>
@@ -230,13 +264,16 @@
     </div>
     <div class="line">-----------------------------------------</div>
 
-
     <div class="footer">
         <p>Tarjeta: **** **** **** 2024</p>
-        <p>Código de autorización:<%= String.format(" %04d", codigoAutorizacion) %></p>
-        <p>Cliente: SYNX</p>
+        <p>Código de autorización:<%=codigoAutorizacion%></p>
     </div>
 </div>
+
+<!-- Botón Volver -->
+<a href="menuComida.jsp">
+    <button class="back-button">Volver</button>
+</a>
 
 </body>
 </html>

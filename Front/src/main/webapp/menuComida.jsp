@@ -205,7 +205,6 @@
 <div class="container">
     <header>
         <h1>Menú</h1>
-        <i class="fas fa-shopping-cart header-icon"></i>
     </header>
 
     <form action="Svmenu" method="post">
