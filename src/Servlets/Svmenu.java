@@ -1,5 +1,6 @@
 package Servlets;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,10 @@ public class Svmenu extends HttpServlet {
         for (String key : menu.keySet()) {
             System.out.println( key + ", cantidad :" + menu.get(key));
         }
-        resp.sendRedirect("menuPrincipal.jsp");
+        req.setAttribute("menu", menu);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("pedido.jsp");
+        dispatcher.forward(req, resp);
+        resp.sendRedirect("pedido.jsp");
         System.out.println("");
     }
 }
