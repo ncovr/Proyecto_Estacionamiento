@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.Random,java.util.Date, java.text.SimpleDateFormat, java.util.HashMap" %>
+<%@ page import="java.util.Random,java.util.Date, java.text.SimpleDateFormat, java.util.HashMap, java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -184,14 +184,52 @@
         %>
         </tbody>
     </table>
+    <%
+        int cantidadTotal = 0;  // Variable para contar la cantidad total de productos
+        int total = 0;   // Variable para almacenar el precio total
+
+        // Recorrer los productos y calcular el total
+        for (String item : menu.keySet()) {
+            int cantidad = menu.get(item);
+            if (cantidad > 0) {
+                // Sumar cantidad total
+                cantidadTotal += cantidad;
+                // Sumar el precio total (suponiendo precios fijos)
+                int precio = 0;
+                switch (item) {
+                    case "completo":
+                        precio = 2100;
+                        break;
+                    case "hamburguesa":
+                        precio = 2500;
+                        break;
+                    case "pizza":
+                        precio = 7000;
+                        break;
+                    case "papasFritas":
+                        precio = 1500;
+                        break;
+                    case "sushi":
+                        precio = 2800;
+                        break;
+                    case "bowl":
+                        precio = 2500;
+                        break;
+                }
+                total += cantidad * precio;
+            }
+        }
+        DecimalFormat formator=new DecimalFormat("#,###");
+        String totalFormateado=formator.format(total);
+    %>
 
     <div class="line">-----------------------------------------</div>
     <div class="cantidad-total">
-        <p>Cantidad</p>
-        <p>Total</p>
-
+        <p>Cantidad Total: <%= cantidadTotal %></p> <!-- Cantidad total de productos -->
+        <p>Total: $<%=totalFormateado %></p> <!-- Precio total -->
     </div>
     <div class="line">-----------------------------------------</div>
+
 
     <div class="footer">
         <p>Tarjeta: **** **** **** 2024</p>
