@@ -1,3 +1,5 @@
+package logica;
+
 import java.util.ArrayList;
 
 public class Cliente {
@@ -16,7 +18,7 @@ public class Cliente {
 
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
-    // Retorna el Arriendo que esté activo
+    // Retorna el logica.Arriendo que esté activo
     public Arriendo getArriendoActivo(String patente){
         // Un cliente puede tener registros de muchos arriendos, por lo que se retorna el que esté activo
         for (Arriendo ar : arriendos) {
@@ -27,7 +29,7 @@ public class Cliente {
         return null;
     }
 
-    // Retorna un arreglo en donde cada posición se almacena un Arriendo, esté activo o inactivo
+    // Retorna un arreglo en donde cada posición se almacena un logica.Arriendo, esté activo o inactivo
     String[] getArriendos(){
         String[] arr = new String[arriendos.size()];
         Arriendo a;
