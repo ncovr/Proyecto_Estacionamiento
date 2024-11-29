@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.Random,java.util.Date, java.text.SimpleDateFormat, java.util.HashMap, java.text.DecimalFormat" %>
+<%@ page import="java.util.LinkedList" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,10 +26,10 @@
             width: 350px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border: 1px solid #ddd;
-            position: absolute; /* Cambié la posición a absolute */
-            top: 50%; /* Centrado verticalmente */
-            left: 10px; /* Fijado a la izquierda */
-            transform: translateY(-50%); /* Ajusta la posición para que esté centrado verticalmente */
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
             height: 90vh;
             display: flex;
             flex-direction: column;
@@ -105,24 +106,29 @@
         }
 
         .cantidad-total {
-            text-align: left; /* Alinear texto a la izquierda */
+            text-align: left;
             font-size: 16px;
             line-height: 1.5;
             font-weight: bold;
         }
 
         .cantidad-total .cantidad {
-            margin-bottom: 30px; /* Espacio entre "Cantidad" y "Total" */
+            margin-bottom: 30px;
         }
 
         .cantidad-total .total {
-            margin-top: 30px; /* Ajustar la posición de "Total" */
+            margin-top: 30px;
         }
 
-        .back-button {
+        .button-container {
+            display: flex;
+            justify-content: flex-end;  /* Alinea los botones a la derecha */
+            width: 100%;
             position: fixed;
             bottom: 20px;
-            right: 20px;
+        }
+
+        .button-container button {
             background-color: rgba(26, 26, 26, 0.98);
             color: white;
             border: none;
@@ -131,27 +137,28 @@
             font-size: 16px;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s forwards;
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para la escala y color de fondo */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            margin-left: 10px; /* Espacio entre los botones */
         }
 
-        /* Animación de aparición */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Efecto hover: cambio de color y aumento de tamaño */
-        .back-button:hover {
+        .button-container button:hover {
             background-color: #e27f42;
-            transform: scale(1.1); /* Escala el botón cuando pasa el cursor */
+            transform: scale(1.1);
         }
+
+        /* Estilo para el dropdown de pago */
+        .payment-method {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -162,11 +169,10 @@
         <%
             //generar fecha actual
             Date fechaAc=new Date();
-            SimpleDateFormat formato=new SimpleDateFormat("EEEE, d  MMMM , yyyy", new java.util.Locale("es", "ES"));
+            SimpleDateFormat formato=new SimpleDateFormat("EEEE, d  MMMM  yyyy", new java.util.Locale("es", "ES"));
             String fechaFormateada = formato.format(fechaAc);
-            // Generar un número aleatorio para la orden
             Random random = new Random();
-            int numeroOrden = random.nextInt(10000); // Generar un número entre 0 y 9999
+            int numeroOrden = random.nextInt(10000);
             int codigoAutorizacion=random.nextInt(1000);
         %>
         <p>Orden #<%= String.format("%04d", numeroOrden) %></p>
@@ -178,39 +184,36 @@
         <tr>
             <th>Ítem</th>
             <th>Cantidad</th>
+            <th>Precio C/U</th>
         </tr>
         </thead>
         <tbody>
         <%
             HashMap<String, Integer> menu = new HashMap<>();
+            HashMap<String, Integer>precios=new HashMap<>();
             String[] carta = {"completo", "hamburguesa", "pizza", "papasFritas", "sushi", "bowl"};
-            int[] precios = {2100, 2500, 7000, 1500, 2800, 2500};
-            int totalGeneral = 0;
+            int[] cartaPrecio = {2100, 2500, 7000, 1500, 2800, 2500};
 
-            // Llenar el HashMap con los productos y las cantidades desde el formulario
+
             for (int i = 0; i < carta.length; i++) {
                 String cantidadStr = request.getParameter(carta[i] + "Cantidad");
                 if (cantidadStr != null && !cantidadStr.isEmpty()) {
                     int cantidad = Integer.parseInt(cantidadStr);
                     menu.put(carta[i], cantidad);
-
-                    // Calcular el total de cada producto
-                    if (cantidad > 0) {
-                        int precio = precios[i];
-                        int totalProducto = cantidad * precio;
-                        totalGeneral += totalProducto;
-                    }
+                    precios.put(carta[i],cartaPrecio[i]);
                 }
             }
 
-            // Mostrar los productos y sus cantidades
+
             for (String item : menu.keySet()) {
                 int cantidad = menu.get(item);
+                int precio= precios.get(item);
                 if (cantidad > 0) {
         %>
         <tr>
             <td><%= item %></td>
             <td><%= cantidad %></td>
+            <td><%= precio%></td>
         </tr>
         <%
                 }
@@ -218,17 +221,15 @@
         %>
         </tbody>
     </table>
-    <%
-        int cantidadTotal = 0;  // Variable para contar la cantidad total de productos
-        int total = 0;   // Variable para almacenar el precio total
 
-        // Recorrer los productos y calcular el total
+    <%
+        int cantidadTotal = 0;
+        int total = 0;
+
         for (String item : menu.keySet()) {
             int cantidad = menu.get(item);
             if (cantidad > 0) {
-                // Sumar cantidad total
                 cantidadTotal += cantidad;
-                // Sumar el precio total (suponiendo precios fijos)
                 int precio = 0;
                 switch (item) {
                     case "completo":
@@ -253,16 +254,25 @@
                 total += cantidad * precio;
             }
         }
-        DecimalFormat formator=new DecimalFormat("#,###");
-        String totalFormateado=formator.format(total);
+        DecimalFormat formator = new DecimalFormat("#,###");
+        String totalFormateado = formator.format(total);
     %>
 
     <div class="line">-----------------------------------------</div>
     <div class="cantidad-total">
-        <p>Cantidad Total: <%= cantidadTotal %></p> <!-- Cantidad total de productos -->
-        <p>Total: $<%=totalFormateado %></p> <!-- Precio total -->
+        <p>Cantidad Total: <%= cantidadTotal %></p>
+        <p>Total: $<%=totalFormateado %></p>
     </div>
     <div class="line">-----------------------------------------</div>
+
+    <!-- Dropdown para elegir el método de pago -->
+    <div class="payment-method">
+        <label for="paymentMethod">Método de Pago:</label>
+        <select name="paymentMethod" id="paymentMethod">
+            <option value="boleta">Boleta</option>
+            <option value="factura">Factura</option>
+        </select>
+    </div>
 
     <div class="footer">
         <p>Tarjeta: **** **** **** 2024</p>
@@ -270,10 +280,16 @@
     </div>
 </div>
 
-<!-- Botón Volver -->
-<a href="menuComida.jsp">
-    <button class="back-button">Volver</button>
-</a>
+<!-- Contenedor para los botones "Pagar" y "Volver" -->
+<div class="button-container">
+    <!-- Botón Pagar -->
+    <button>Pagar</button>
+
+    <!-- Botón Volver -->
+    <a href="menuComida.jsp">
+        <button>Volver</button>
+    </a>
+</div>
 
 </body>
 </html>
