@@ -158,6 +158,20 @@
             width: 100%;
             margin-top: 10px;
         }
+        #message {
+            display: none; /* El mensaje está oculto por defecto */
+            position: absolute;
+            top: 20px; /* 20px desde la parte superior del contenedor */
+            left: 50%; /* Centrado horizontal */
+            transform: translateX(-50%); /* Ajuste para centrar completamente */
+            color: green;
+            text-align: center;
+            background-color: #e7f9e7;
+            padding: 10px;
+            border: 1px solid green;
+            border-radius: 5px;
+            width: 80%; /* Puedes ajustar el ancho */
+        }
 
     </style>
 </head>
@@ -283,13 +297,29 @@
 <!-- Contenedor para los botones "Pagar" y "Volver" -->
 <div class="button-container">
     <!-- Botón Pagar -->
-    <button>Pagar</button>
+    <button id="Pagar">Pagar</button>
 
     <!-- Botón Volver -->
     <a href="menuComida.jsp">
         <button>Volver</button>
     </a>
 </div>
-
+<div id="message" style="display: none; color: green; text-align: center; margin-top: 10px; padding: 10px; background-color: #e7f9e7; border: 1px solid green; border-radius: 5px;">
+    ¡Pago realizado con éxito!
+</div>
+<script>
+    // Función para mostrar el mensaje temporal al hacer clic en "Pagar"
+    document.getElementById('Pagar').onclick = function() {
+        var message = document.getElementById('message');
+        message.style.display = 'block'; // Mostrar el mensaje
+        setTimeout(function() {
+            message.style.display = 'none'; // Ocultar el mensaje después de 3 segundos
+        }, 2000);
+        // Redirigir al menú de comida después de 4 segundos
+        setTimeout(function() {
+            window.location.href = "menuComida.jsp"; // Redirigir a la página del menú de comida
+        }, 4000);
+    }
+</script>
 </body>
 </html>
