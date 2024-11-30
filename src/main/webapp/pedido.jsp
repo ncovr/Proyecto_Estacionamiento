@@ -26,11 +26,11 @@
             width: 350px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border: 1px solid #ddd;
-            position: absolute;
+            position: relative;
             top: 50%;
             left: 10px;
-            transform: translateY(-50%);
-            height: 90vh;
+
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -90,7 +90,7 @@
 
         .footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 5px;
             font-size: 12px;
             color: #888;
         }
@@ -289,7 +289,6 @@
     </div>
 
     <div class="footer">
-        <p>Tarjeta: **** **** **** 2024</p>
         <p>Código de autorización:<%=codigoAutorizacion%></p>
     </div>
 </div>
