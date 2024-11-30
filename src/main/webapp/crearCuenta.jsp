@@ -175,6 +175,16 @@
         <form action="Svcrearcuenta" method="post">
             <!-- Botón "Crear cuenta" -->
             <div class="form-group">
+             <span class="error">
+                 <%
+                     String errorUsername = (String) request.getAttribute("errorUsername");
+                     if (errorUsername != null) {
+                         out.print(errorUsername);
+                     }
+                 %>
+             </span>
+            </div>
+            <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Rut" required>
             </div>
             <div class="form-group">

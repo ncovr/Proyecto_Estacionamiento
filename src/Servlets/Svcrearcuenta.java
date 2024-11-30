@@ -1,5 +1,8 @@
 package Servlets;
 
+import logica.RutException;
+import logica.Sistema;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,21 +12,26 @@ import java.io.IOException;
 
 @WebServlet(name = "Svcrearcuenta", urlPatterns = {"/Svcrearcuenta"})
 public class Svcrearcuenta extends HttpServlet {
+    Sistema sistema = Sistema.getInstance();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String user = req.getParameter("username");
+        String rut = req.getParameter("username");
         String pass = req.getParameter("password");
-        System.out.println("Crear Cuenta: nombre " + user + " password " + pass);
-        boolean registered = register(user, pass);
-        if (registered) {
+        boolean run;
+        try {
+            run=sistema.crearPersona(rut);
+        } catch (RutException e) {
+            run=false;
+            throw new RuntimeException(e);
+        }
+        if (run) {
             resp.sendRedirect("menuPrincipal.jsp");
+            System.out.println("Crear Cuenta, rut " + rut + " password " + pass);
         } else {
             req.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            req.getRequestDispatcher("crearCuenta.jsp").forward(req, resp);
+            System.out.println("no register");
         }
     }
 
-    public boolean register(String user, String pass) {
-        return true;
-    }
 }

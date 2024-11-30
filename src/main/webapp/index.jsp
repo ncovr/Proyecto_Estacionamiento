@@ -38,8 +38,8 @@
             padding: 0;
             position: relative;
             z-index: 10;
-            opacity: 0;  /* Inicialmente invisible */
-            animation: slideIn 1s forwards;  /* Animación de entrada */
+            opacity: 0; /* Inicialmente invisible */
+            animation: slideIn 1s forwards; /* Animación de entrada */
         }
 
         /* Animación de entrada para el bloque */
@@ -179,6 +179,17 @@
             <div class="form-group">
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
+            <div class="form-group">
+             <span class="error">
+                 <%
+                     String errorUsername = (String) request.getAttribute("errorUsername");
+                     if (errorUsername != null) {
+                         out.print(errorUsername);
+                     }
+                 %>
+             </span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Iniciar Sesión">
             </div>

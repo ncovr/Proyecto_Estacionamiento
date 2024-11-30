@@ -10,12 +10,12 @@ public class Sistema {
     private Inventario inventario = new Inventario();
     private static Sistema instance;
 
-    private Sistema() {
+    public Sistema() {
         plazas = new boolean[10];
         tarifaMinuto = 10;
     }
 
-    static Sistema getInstance() {
+    public static Sistema getInstance() {
         if (instance == null) {
             instance = new Sistema();
         }
@@ -150,6 +150,19 @@ public class Sistema {
             }
         }
 
+    }
+
+    public boolean crearPersona(String run) throws RutException {
+        Boolean isValid;
+        try {
+            isValid=Rut.isValido(run);
+            if(isValid){
+                return true;
+            }
+        } catch (RutException e) {
+            return false;
+        }
+        return false;
     }
 
     void editarPersonal() {
