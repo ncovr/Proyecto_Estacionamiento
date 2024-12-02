@@ -21,8 +21,12 @@ Settings>Tomcat Server >+ *escoger la carpeta antes creada llamada "tomcat" y se
 
 luego seleccionar apply y ok
 
-ahora ejercutar "Tomcat: Proyecto_Estacionamiento" con el archivo index.jsp abierto debe aparecer como se adjunta en la imagen ![image](https://github.com/user-attachments/assets/f13a46dc-b05c-4658-b402-2b4f0497a161)
+ahora ejercutar "Tomcat: Proyecto_Estacionamiento" con el archivo index.jsp abierto debe aparecer como se adjunta en la imagen
 
-deberia ejecurtarse correctamente, escogiendo el link como aparece en la imagen ![2024-12-02_20h35_50](https://github.com/user-attachments/assets/ca1c3b4b-9dfa-4386-b519-ddbff013bd45)
+![2024-12-02_20h32_41](https://github.com/user-attachments/assets/1f070c81-22a3-4a35-9836-ca8a20ebcbdd)
+
+deberia ejecurtarse correctamente, escogiendo el link como aparece en la imagen 
+
+![2024-12-02_20h35_50](https://github.com/user-attachments/assets/581ca1e8-dcbb-481f-b111-1e321c4a57d1)
 
 
