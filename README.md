@@ -2,9 +2,9 @@ Instalación:
 descargar apache-tomcat-9.0.97:
 https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip
 
-Unsando Intellj
 Extraerlo y dejarlo en una carpeta nueva llamada "tomcat"
 
+Usando Intellij para clonar el proyecto
 luego revisar ciertas cosas dentro del proyecto ya clonado
 
 Dependencias: 
