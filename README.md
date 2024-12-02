@@ -4,12 +4,17 @@ https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.97/bin/apache-tomcat-9.0.97.zip
 
 Extraerlo y dejarlo en una carpeta nueva llamada "tomcat"
 
-Usando Intellij para clonar el proyecto
+Usando Intellij para clonar el proyecto.
+
 luego revisar ciertas cosas dentro del proyecto ya clonado
 
 Dependencias: 
 
-Project Strucuture> project> SDK :22 Amazon cortto 22.02
+Project Strucuture> project> SDK :22 Amazon corretto 22.02
+
+Project Strucuture> project> Language level: SDK Default
+
+Project Strucuture> project>Compiler output: Direccion donde tenga el proyecto ~\...\Proyecto_Estacionamiento\out
 
 Project Strucuture> modules>Dependecies> Java EE 6-Java EE6
 
