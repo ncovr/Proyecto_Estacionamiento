@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.Random,java.util.Date, java.text.SimpleDateFormat, java.util.HashMap, java.text.DecimalFormat" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="java.awt.*" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -239,6 +240,7 @@
     <%
         int cantidadTotal = 0;
         int total = 0;
+        int total1=0;
 
         for (String item : menu.keySet()) {
             int cantidad = menu.get(item);
@@ -266,22 +268,25 @@
                         break;
                 }
                 total += cantidad * precio;
+                total1= (int) (total+(total*0.19));
             }
         }
         DecimalFormat formator = new DecimalFormat("#,###");
         String totalFormateado = formator.format(total);
+        String totalIvaformateado=formator.format(total1);
     %>
 
     <div class="line">-----------------------------------------</div>
     <div class="cantidad-total">
         <p>Cantidad Total: <%= cantidadTotal %></p>
         <p>Total: $<%=totalFormateado %></p>
+        <p>Total con IVA: $<%=totalIvaformateado%></p>
     </div>
     <div class="line">-----------------------------------------</div>
 
     <!-- Dropdown para elegir el método de pago -->
     <div class="payment-method">
-        <label for="paymentMethod">Método de Pago:</label>
+        <label for="paymentMethod">Seleccionar Comprobante:</label>
         <select name="paymentMethod" id="paymentMethod">
             <option value="boleta">Boleta</option>
             <option value="factura">Factura</option>
