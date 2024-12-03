@@ -20,15 +20,19 @@ Project Strucuture> modules>Dependecies> Java EE 6-Java EE6
 
 Project Strucuture> Libraries> Java EE 6-Java EE6
 
+Project Strucuture> Plataform Settings SDks> corretto-22
+
 Plugin>Descargar Smart Tomcat
 
 Settings>Tomcat Server >+ *escoger la carpeta antes creada llamada "tomcat" y seleccionar "apache-tomcat-9.0.97"
 
 luego seleccionar apply y ok
 
-ahora ejercutar "Tomcat: Proyecto_Estacionamiento" con el archivo index.jsp abierto debe aparecer como se adjunta en la imagen
+ahora ejercutar "Current File" con el archivo index.jsp abierto debe aparecer como se adjunta en la imagen
 
-![2024-12-02_20h32_41](https://github.com/user-attachments/assets/1f070c81-22a3-4a35-9836-ca8a20ebcbdd)
+
+![2024-12-03_12h13_09](https://github.com/user-attachments/assets/b147aaaf-0316-4376-afc2-5080b6b8f9fd)
+
 
 deberia ejecurtarse correctamente, escogiendo el link como aparece en la imagen 
 
