@@ -197,14 +197,11 @@
         }
 
         .error {
-            /* Oculto inicialmente */
             color: #b22222;
             font-size: 16px;
-            font-weight: bold;
             background-color: #fbeaea;
             border-radius: 5px;
-
-            margin: 10px 0;
+            margin: 15px ;
             align-items: center;
         }
 
@@ -277,8 +274,7 @@
             <a href="menuPrincipal.jsp">
                 <button type="button" class="volver-btn">Volver</button>
             </a>
-
-            <span id="errorCantidad" class="error" style="display:none;">
+            <span class="error" id="ErrorMensaje" >
                 <%
                     String errorCantidad = (String) request.getAttribute("errorCantidad");
                     if (errorCantidad != null) {
@@ -286,6 +282,18 @@
                     }
                 %>
             </span>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var error = document.getElementById("ErrorMensaje");
+                    if (error.textContent.trim() !== "") {
+                        // Si el error contiene un mensaje, lo mostramos y luego lo ocultamos después de 4 segundos
+                        error.style.display = 'block';
+                        setTimeout(function () {
+                            error.style.display = 'none';
+                        }, 5000);
+                    }
+                });
+            </script>
             <button type="submit">Realizar Pedido</button>
         </div>
     </form>

@@ -1,4 +1,5 @@
 package Servlets;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,15 +33,38 @@ public class Svmenu extends HttpServlet {
         if (cantidadExcede) {
             req.setAttribute("errorCantidad", "Error al registrar. Una o más cantidades exceden el máximo " +
                     "permitido de " + cantidad + ".");
-            req.setAttribute("menu", menu); // Enviar los valores actuales al JSP para mostrarlos
             req.getRequestDispatcher("menuComida.jsp").forward(req, resp);
             return; // Terminar la ejecución del servlet
         }
-
+        //revision si pidio cero elementos del menu
+        boolean isCero = false;
+        isCero = mismoValor(menu);
+        if (isCero) {
+            req.setAttribute("errorCantidad", "Erro al registar. Las cantidad no pueden ser cero");
+            req.getRequestDispatcher("menuComida.jsp").forward(req, resp);
+            return;
+        }
         // Si todas las cantidades son válidas, continuar con el flujo normal
         req.setAttribute("menu", menu);
         RequestDispatcher dispatcher = req.getRequestDispatcher("pedido.jsp");
         dispatcher.forward(req, resp);
+
+
     }
+
+    public static <K, V> boolean mismoValor(HashMap<K, V> map) {
+        if (map.isEmpty()) return true; // Si está vacío, consideramos que son "iguales"
+        // Obtén un iterador para los valores
+        V firstValue = null;
+        for (V value : map.values()) {
+            if (firstValue == null) {
+                firstValue = value; // Inicializa el primer valor
+            } else if (!firstValue.equals(value)) {
+                return false; // Si algún valor es diferente, regresa falso
+            }
+        }
+        return true; // Si llega aquí, todos son iguales
+    }
+
 
 }
