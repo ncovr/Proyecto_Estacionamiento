@@ -6,6 +6,8 @@ Extraerlo y dejarlo en una carpeta nueva llamada "tomcat"
 
 Usando Intellij para clonar el proyecto.
 
+Debe utilizar la rama "Frontend"
+
 luego revisar ciertas cosas dentro del proyecto ya clonado
 
 Dependencias: 
