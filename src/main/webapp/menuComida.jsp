@@ -156,7 +156,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;  /* Añadir espacio entre la imagen y el input */
+            margin-top: 10px; /* Añadir espacio entre la imagen y el input */
         }
 
         .quantity-input {
@@ -174,7 +174,8 @@
             margin-top: 10px;
             width: 100%; /* Asegura que el contenedor de los botones ocupe todo el ancho */
         }
-        a{
+
+        a {
             text-decoration: none;
         }
 
@@ -194,6 +195,19 @@
             background-color: #e27f42;
             outline: none;
         }
+
+        .error {
+            /* Oculto inicialmente */
+            color: #b22222;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #fbeaea;
+            border-radius: 5px;
+
+            margin: 10px 0;
+            align-items: center;
+        }
+
 
     </style>
 </head>
@@ -264,6 +278,14 @@
                 <button type="button" class="volver-btn">Volver</button>
             </a>
 
+            <span id="errorCantidad" class="error" style="display:none;">
+                <%
+                    String errorCantidad = (String) request.getAttribute("errorCantidad");
+                    if (errorCantidad != null) {
+                        out.print(errorCantidad);
+                    }
+                %>
+            </span>
             <button type="submit">Realizar Pedido</button>
         </div>
     </form>
