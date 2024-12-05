@@ -39,7 +39,8 @@ public class Svmenu extends HttpServlet {
         //revision si pidio cero elementos del menu
         boolean isCero = false;
         isCero = mismoValor(menu);
-        if (isCero) {
+        int base=menu.get("completo");
+        if (isCero && base == 0) {
             req.setAttribute("errorCantidad", "Erro al registar. Las cantidad no pueden ser cero");
             req.getRequestDispatcher("menuComida.jsp").forward(req, resp);
             return;
