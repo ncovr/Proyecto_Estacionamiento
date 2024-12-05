@@ -93,6 +93,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
 
         .space.selected {
@@ -152,6 +153,24 @@
         .submit-button:hover {
             background-color: #6ba66b;
         }
+
+        /* Estilo del menú desplegable */
+        .status-select {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            padding: 5px;
+            display: block;
+        }
+
+        .space:hover .status-select {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -161,60 +180,112 @@
     </div>
     <div class="parking-area">
         <div class="row">
-            <div class="space available" id="space1" onclick="selectSpace(this)">1</div>
-            <div class="space available" id="space2" onclick="selectSpace(this)">2</div>
-            <div class="space available" id="space3" onclick="selectSpace(this)">3</div>
-            <div class="space available" id="space4" onclick="selectSpace(this)">4</div>
-            <div class="space available" id="space5" onclick="selectSpace(this)">5</div>
+            <div class="space available" id="space1">
+                1
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space2">
+                2
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space3" >
+                3
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space4">
+                4
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space5">
+                5
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="row">
-            <div class="space available" id="space6" onclick="selectSpace(this)">6</div>
-            <div class="space available" id="space7" onclick="selectSpace(this)">7</div>
-            <div class="space available" id="space8" onclick="selectSpace(this)">8</div>
-            <div class="space available" id="space9" onclick="selectSpace(this)">9</div>
-            <div class="space available" id="space10" onclick="selectSpace(this)">10</div>
+            <div class="space available" id="space6">
+                6
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space7">
+                7
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space8">
+                8
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space9">
+                9
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <div class="space available" id="space10">
+                10
+                <select class="status-select" onchange="updateStatus(this)">
+                    <option value="available" selected>Desocupado</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
         </div>
     </div>
-
-    <!-- El bloque de botones ha sido eliminado -->
-
-    <form id="parkingForm" method="post" action="Svconsultar">
-        <input type="hidden" name="parkingData" id="parkingData">
-        <div class="back-button">
-            <a href="estacionamiento.jsp">Volver</a>
-            <button class="submit-button" type="submit" onclick="prepareData()">Enviar Datos</button>
-        </div>
-    </form>
-
-    <script>
-        let selectedSpace = null;
-
-        function selectSpace(element) {
-            if (selectedSpace) {
-                selectedSpace.classList.remove('selected');
-            }
-            selectedSpace = element;
-            selectedSpace.classList.add('selected');
-        }
-
-        function prepareData() {
-            const parkingData = getParkingStatus();
-            document.getElementById('parkingData').value = JSON.stringify(parkingData);
-        }
-
-        function getParkingStatus() {
-            const spaces = document.querySelectorAll('.space');
-            const statusData = Array.from(spaces).map(space => {
-                return {
-                    number: space.textContent.trim(),
-                    status: space.classList.contains('available') ? 'available' :
-                        space.classList.contains('occupied') ? 'occupied' : 'reserved'
-                };
-            });
-            return statusData;
-        }
-    </script>
+    <div class="back-button">
+        <a href="estacionamiento.jsp" class="submit-button">Volver</a>
+    </div>
 </form>
+
+<script>
+    function updateStatus(select) {
+        const space = select.parentElement;
+        const status = select.value;
+
+        // Cambia el color según el estado
+        if (status === "available") {
+            space.className = "space available";
+        } else if (status === "occupied") {
+            space.className = "space occupied";
+        } else if (status === "reserved") {
+            space.className = "space reserved";
+        }
+    }
+
+</script>
+
 </body>
 </html>
