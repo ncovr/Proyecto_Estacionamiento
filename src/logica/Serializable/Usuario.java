@@ -23,6 +23,9 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return run+","+password;
+        return "Usuario{" +
+                "run='" + run + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

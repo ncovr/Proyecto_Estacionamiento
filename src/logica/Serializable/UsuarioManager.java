@@ -5,47 +5,54 @@ import java.util.ArrayList;
 
 public class UsuarioManager {
 
-    // Guardar usuarios en un archivo
-    public static void guardarUsuario(ArrayList<Usuario> usuarios, String nombreArchivo) {
-        if (usuarios == null || nombreArchivo == null || nombreArchivo.isEmpty()) {
-            throw new IllegalArgumentException("La lista de usuarios o el nombre del archivo no pueden ser nulos o vacíos.");
+    // Ruta predeterminada para el archivo
+    private static final String ARCHIVO_USUARIOS = "src/logica/Serializable/usuarios.txt";
+    public static void guardarUsuario(ArrayList<Usuario> usuarios) {
+        if (usuarios == null) {
+            throw new IllegalArgumentException("La lista de usuarios no puede ser nula.");
         }
 
-        try (BufferedWriter oos = new BufferedWriter(new FileWriter(nombreArchivo))) {
-            for (Usuario usuario : usuarios) {
-                // Supongamos que Usuario tiene un método `toString` adecuado
-                oos.write(usuario.toString());  // Escribe la representación del usuario
-                oos.newLine();  // Nueva línea para cada usuario
+        File archivo = new File(ARCHIVO_USUARIOS);
+        try {
+            if (!archivo.exists()) {
+                archivo.getParentFile().mkdirs(); // Crear directorio si no existe
+                archivo.createNewFile(); // Crear archivo si no existe
             }
-            System.out.println("Usuarios guardados exitosamente en " + nombreArchivo);
+
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo))) {
+                oos.writeObject(usuarios);
+                System.out.println("Usuarios guardados en: " + archivo.getAbsolutePath());
+            }
         } catch (IOException e) {
             System.err.println("Error al guardar los usuarios: " + e.getMessage());
         }
     }
 
+
     // Cargar usuarios desde un archivo
-    public static ArrayList<Usuario> cargarUsuario(String nombreArchivo) {
-        if (nombreArchivo == null || nombreArchivo.isEmpty()) {
-            throw new IllegalArgumentException("El nombre del archivo no puede ser nulo o vacío.");
-        }
+    public static ArrayList<Usuario> cargarUsuario() {
+        try {
+            File archivo = new File(ARCHIVO_USUARIOS);
 
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] datos = line.split(",");  // Dividir en partes usando la coma como separador
-                if (datos.length == 2) {  // Verifica que haya al menos 2 elementos
-                    Usuario usuario = new Usuario(datos[0], datos[1]);  // Asegúrate de que tu clase Usuario pueda manejar estos parámetros
-                    usuarios.add(usuario);
-                }
+            // Si el archivo no existe, crea uno vacío
+            if (!archivo.exists()) {
+                archivo.getParentFile().mkdirs();
+                archivo.createNewFile();
+                System.out.println("Archivo creado en " + ARCHIVO_USUARIOS);
+                return new ArrayList<>();
             }
-        } catch (IOException e) {
+
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
+                return (ArrayList<Usuario>) ois.readObject();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado. Retornando una lista vacía.");
+            return new ArrayList<>();
+        } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error al cargar los usuarios: " + e.getMessage());
+            return new ArrayList<>();
         }
-
-        return usuarios;
     }
-
 
     // Verificar si un usuario ya está registrado
     public static boolean esUsuarioRegistrado(ArrayList<Usuario> usuarios, String password) {
@@ -54,7 +61,7 @@ public class UsuarioManager {
         }
 
         for (Usuario usuario : usuarios) {
-            if (usuario.getPassword().equals(password) && usuario.getRun() != null) {
+            if (usuario.getPassword().equals(password)) {
                 return true;
             }
         }

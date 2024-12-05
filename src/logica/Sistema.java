@@ -7,7 +7,6 @@ import logica.Serializable.Usuario;
 import java.util.ArrayList;
 
 public class Sistema {
-    private static final String ARCHIVO_USUARIO ="src/dataUsers/usuarios.txt";
     private static ArrayList<Usuario>usuarios;
     private boolean[] plazas;
     private final int tarifaMinuto;
@@ -19,7 +18,7 @@ public class Sistema {
     public Sistema() {
         plazas = new boolean[10];
         tarifaMinuto = 10;
-        this.usuarios=UsuarioManager.cargarUsuario(ARCHIVO_USUARIO);
+        this.usuarios=UsuarioManager.cargarUsuario();
     }
 
     public static Sistema getInstance() {
@@ -182,7 +181,7 @@ public class Sistema {
         usuarios.add(nuevoUsuario);
 
         // Guardar los cambios en el archivo
-        UsuarioManager.guardarUsuario(usuarios, ARCHIVO_USUARIO);
+        UsuarioManager.guardarUsuario(usuarios);
         return true;
     }
 
