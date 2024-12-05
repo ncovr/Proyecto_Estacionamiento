@@ -7,7 +7,7 @@ import logica.Serializable.Usuario;
 import java.util.ArrayList;
 
 public class Sistema {
-    private static final String ARCHIVO_USUARIO ="usuarios.txt";
+    private static final String ARCHIVO_USUARIO ="src/dataUsers/usuarios.txt";
     private static ArrayList<Usuario>usuarios;
     private boolean[] plazas;
     private final int tarifaMinuto;
