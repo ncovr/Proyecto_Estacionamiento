@@ -241,6 +241,7 @@
         int cantidadTotal = 0;
         int total = 0;
         int total1=0;
+        int valor=0;
 
         for (String item : menu.keySet()) {
             int cantidad = menu.get(item);
@@ -268,19 +269,24 @@
                         break;
                 }
                 total += cantidad * precio;
-                total1= (int) (total+(total*0.19));
+                valor = (int) (total);
+                total1= (int) (total*0.09);
+                total = (int) (total + total*0.09);
+
             }
         }
         DecimalFormat formator = new DecimalFormat("#,###");
         String totalFormateado = formator.format(total);
         String totalIvaformateado=formator.format(total1);
+        String valorFormateado=formator.format(valor);
     %>
 
     <div class="line">-----------------------------------------</div>
     <div class="cantidad-total">
         <p>Cantidad Total: <%= cantidadTotal %></p>
+        <p>Precio: $<%=valorFormateado%></p>
+        <p>IVA: $<%=totalIvaformateado%></p>
         <p>Total: $<%=totalFormateado %></p>
-        <p>Total con IVA: $<%=totalIvaformateado%></p>
     </div>
     <div class="line">-----------------------------------------</div>
 

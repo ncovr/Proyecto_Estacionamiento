@@ -16,7 +16,7 @@ public class Svmenu extends HttpServlet {
         HashMap<String, Integer> menu = new HashMap<>();
 
         String[] carta = {"completo", "hamburguesa", "pizza", "papasFritas", "sushi", "bowl"};
-        int cantidad = 10;
+        int cantidad = 15;
         boolean cantidadExcede = false;
 
         for (int i = 0; i < carta.length; i++) {
