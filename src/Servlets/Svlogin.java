@@ -1,5 +1,5 @@
 package Servlets;
-import logica.RutException;
+import logica.Exception.RutException;
 import logica.Sistema;
 
 import javax.servlet.ServletException;
@@ -24,14 +24,17 @@ public class Svlogin extends HttpServlet {
             run=false;
             throw new RuntimeException(e);
         }
-        if (run) {
+
+        if (run && sistema.validarUsuario(pass)) {
             resp.sendRedirect("menuPrincipal.jsp");
-            System.out.println("Login, rut " + rut + " password " + pass);
+            System.out.println("usuario ya esta registrado");
+
         } else {
-            req.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");
+            req.setAttribute("errorUsername", "Error al ingresar a la cuenta. Intente de nuevo");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
             System.out.println("no register");
         }
+
     }
 
 }

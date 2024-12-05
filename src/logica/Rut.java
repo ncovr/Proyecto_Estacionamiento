@@ -1,11 +1,13 @@
 package logica;
+import logica.Exception.RutException;
+
 import java.io.Serializable;
 
 public class Rut implements Serializable {
     private long num;
     private char dv;
 
-    public Rut(long num, char dv)throws  RutException {
+    public Rut(long num, char dv)throws RutException {
 
         String rutS = Long.toString(num) + dv; //Convertimos el num en una cadena de texto
 

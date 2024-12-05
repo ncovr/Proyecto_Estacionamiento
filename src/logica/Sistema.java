@@ -1,8 +1,14 @@
 package logica;
 
+import logica.Exception.RutException;
+import logica.Serializable.UsuarioManager;
+import logica.Serializable.Usuario;
+
 import java.util.ArrayList;
 
 public class Sistema {
+    private static final String ARCHIVO_USUARIO ="usuarios.txt";
+    private static ArrayList<Usuario>usuarios;
     private boolean[] plazas;
     private final int tarifaMinuto;
     private ArrayList<Cliente> clientes = new ArrayList<>();
@@ -13,6 +19,7 @@ public class Sistema {
     public Sistema() {
         plazas = new boolean[10];
         tarifaMinuto = 10;
+        this.usuarios=UsuarioManager.cargarUsuario(ARCHIVO_USUARIO);
     }
 
     public static Sistema getInstance() {
@@ -165,8 +172,23 @@ public class Sistema {
         return false;
     }
 
-    void editarPersonal() {
+    // Registrar un nuevo usuario
+    public boolean registrarUsuario(String run, String password) {
+        if (UsuarioManager.esUsuarioRegistrado(usuarios, password)) {
+            return false; // El usuario ya está registrado
+        }
 
+        Usuario nuevoUsuario = new Usuario(run, password);
+        usuarios.add(nuevoUsuario);
+
+        // Guardar los cambios en el archivo
+        UsuarioManager.guardarUsuario(usuarios, ARCHIVO_USUARIO);
+        return true;
+    }
+
+    // Validar un usuario
+    public boolean validarUsuario(String password) {
+        return UsuarioManager.esUsuarioRegistrado(usuarios, password);
     }
 
 

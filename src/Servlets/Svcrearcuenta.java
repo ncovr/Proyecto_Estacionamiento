@@ -1,6 +1,6 @@
 package Servlets;
 
-import logica.RutException;
+import logica.Exception.RutException;
 import logica.Sistema;
 
 import javax.servlet.ServletException;
@@ -24,9 +24,9 @@ public class Svcrearcuenta extends HttpServlet {
             run=false;
             throw new RuntimeException(e);
         }
-        if (run) {
+        if (run && sistema.registrarUsuario(rut, pass)) {
             resp.sendRedirect("menuPrincipal.jsp");
-            System.out.println("Crear Cuenta, rut " + rut + " password " + pass);
+            System.out.println("usuario registrado, rut " + rut + " password " + pass);
         } else {
             req.setAttribute("errorUsername", "Error al registrar la cuenta. Intente nuevamente.");
             req.getRequestDispatcher("crearCuenta.jsp").forward(req, resp);
