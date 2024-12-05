@@ -66,26 +66,28 @@
         .parking-area {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 50px; /* Aumenta el espacio entre filas */
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px; /* Aumenta el espacio interno */
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 20px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 80%; /* Aumenta el ancho relativo al viewport */
+            max-width: 1200px; /* Establece un máximo de ancho */
         }
 
         .row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 20px; /* Aumenta el espacio entre espacios de estacionamiento */
         }
 
         .space {
-            width: 80px;
-            height: 80px;
+            width: 160px; /* Ancho del espacio */
+            height: 110px; /* Alto del espacio */
             text-align: center;
-            line-height: 80px;
+            line-height: 110px; /* Centrado vertical del texto */
             border: 2px solid #ccc;
             font-weight: bold;
             font-size: 1.2rem;
@@ -96,16 +98,6 @@
             position: relative;
         }
 
-        .space.selected {
-            outline: 4px solid #007bff;
-        }
-
-        .path {
-            width: 40px;
-            height: 80px;
-            background-color: #e0e0e0;
-            border: 2px dashed #999;
-        }
 
         .divider {
             width: 100%;
@@ -163,9 +155,15 @@
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 0.8rem;
-            padding: 5px;
-            display: block;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 5px;
+            width: 110px;
+            text-align: center;
+        }
+        .status-select option {
+            padding: 10px; /* Aumenta el espacio interno de cada opción */
+            font-size: 1rem; /* Ajusta el tamaño de la fuente */
         }
 
         .space:hover .status-select {
