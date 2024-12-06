@@ -182,7 +182,7 @@
 <!-- Contenido principal -->
 <div class="main-content" id="main-content">
   <!-- Botón cuadrado con bordes suaves -->
-  <a href="consultarDisponibilidad.jsp" style="text-decoration: none;">
+  <a href="espacios.jsp" style="text-decoration: none;">
     <button class="square-btn">
       <img src="img/consultar.png" alt="Icono de consulta" style="width: 20px; height: 20px; margin-right: 10px;">
       Consultar Disponibilidad
