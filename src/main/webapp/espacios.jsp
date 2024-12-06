@@ -91,6 +91,46 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        button {
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"] {
+            background-color: rgba(26, 26, 26, 0.85);
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        button[type="button"] {
+            background-color: rgba(26, 26, 26, 0.87);
+            color: white;
+        }
+
+        button[type="button"]:hover {
+            background-color: #6ba66b;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+
         .opciones {
             display: flex;
             justify-content: space-around;
@@ -279,6 +319,9 @@
             </div>
         </div>
         <button type="submit">Guardar Datos</button>
+        <button type="button">
+            <a href="estacionamiento.jsp">Volver</a>
+        </button>
     </form>
 </div>
 
