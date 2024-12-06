@@ -13,5 +13,4 @@
     <servlet-name>Svlogin</servlet-name>
     <url-pattern>/Svlogin</url-pattern>
   </servlet-mapping>
-
 </web-app>

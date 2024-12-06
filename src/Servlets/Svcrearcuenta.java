@@ -19,9 +19,9 @@ public class Svcrearcuenta extends HttpServlet {
         String pass = req.getParameter("password");
         boolean run;
         try {
-            run=sistema.crearPersona(rut);
+            run = sistema.crearPersona(rut);
         } catch (RutException e) {
-            run=false;
+            run = false;
             throw new RuntimeException(e);
         }
         if (run && sistema.registrarUsuario(rut, pass)) {
@@ -32,6 +32,7 @@ public class Svcrearcuenta extends HttpServlet {
             req.getRequestDispatcher("crearCuenta.jsp").forward(req, resp);
             System.out.println("no register");
         }
-    }
 
+
+    }
 }
