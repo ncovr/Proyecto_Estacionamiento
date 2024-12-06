@@ -3,11 +3,14 @@ package logica;
 import logica.Exception.RutException;
 import logica.Serializable.UsuarioManager;
 import logica.Serializable.Usuario;
+import logica.Serializable.parking;
+import logica.Serializable.parkingManager;
 
 import java.util.ArrayList;
 
 public class Sistema {
     private static ArrayList<Usuario>usuarios;
+    private static ArrayList<parking>espacios;
     private boolean[] plazas;
     private final int tarifaMinuto;
     private ArrayList<Cliente> clientes = new ArrayList<>();
@@ -19,6 +22,7 @@ public class Sistema {
         plazas = new boolean[10];
         tarifaMinuto = 10;
         this.usuarios=UsuarioManager.cargarUsuario();
+        this.espacios= parkingManager.obtenerEstacionamientos();
     }
 
     public static Sistema getInstance() {
@@ -188,6 +192,19 @@ public class Sistema {
     // Validar un usuario
     public boolean validarUsuario(String password) {
         return UsuarioManager.esUsuarioRegistrado(usuarios, password);
+    }
+
+
+    //espacios
+    public boolean registrarEspacio(String[] espacio){
+        if(parkingManager.guardarEstacionamiento(espacio)){
+            return true;
+        }
+        parking nuevo=new parking(12);
+        espacios.add(nuevo);
+
+        parkingManager.guardarEstacionamiento(espacio);
+        return true;
     }
 
 

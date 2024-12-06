@@ -1,5 +1,7 @@
 package Servlets;
 
+import logica.Serializable.parking;
+import logica.Serializable.parkingManager;
 import logica.Sistema;
 
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 @WebServlet(name = "Svcuenta", urlPatterns = {"/Svcuenta"})
@@ -20,9 +23,21 @@ public class Svcuenta extends HttpServlet {
         for (int i = 0; i < espacioId; i++) {
             espacio[i]=req.getParameter("opcion"+((i+1)));
         }
-        print(espacio);
 
-        resp.sendRedirect("estacionamiento.jsp");
+        boolean espacios;
+        espacios=sistema.registrarEspacio(espacio);
+        if(espacios){
+            resp.sendRedirect("estacionamiento.jsp");
+            System.out.println("save espacios");
+        }else{
+            req.getRequestDispatcher("estacionamiento.jsp").forward(req, resp);
+            System.out.println("no save espacios");
+        }
+
+
+
+    }
+
 
     }
 
