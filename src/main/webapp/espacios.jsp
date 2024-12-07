@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -171,150 +172,24 @@
     <form id="parkingForm" action="Svcuenta" method="post">
         <div class="contenedor-principal">
             <div class="bloque">
-                <!-- Repite el contenido de los recuadros aquí -->
-                <div class="recuadro" id="recuadro1">
-                    Espacio 1
+                <%
+                    Map<Integer, Integer> espacios = (Map<Integer, Integer>) request.getAttribute("espacios");
+                    for (int i = 1; i <= 12; i++) {
+                        Integer estado = espacios.get(i);
+                        String clase = estado == 1 ? "opcion1" : "opcion2"; // 1 = libre, 2 = ocupado
+                %>
+                <div class="recuadro" id="recuadro<%= i %>" class="<%= clase %>">
+                    Espacio <%= i %>
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion1" value="1" onclick="marcarOpcion(1, 1)"> Libre
+                            <input type="radio" name="opcion<%= i %>" value="1" <%= estado == 1 ? "checked" : "" %> onclick="marcarOpcion(1, <%= i %>)"> Libre
                         </label>
                         <label>
-                            <input type="radio" name="opcion1" value="2" onclick="marcarOpcion(2, 1)"> Ocupado
+                            <input type="radio" name="opcion<%= i %>" value="2" <%= estado == 2 ? "checked" : "" %> onclick="marcarOpcion(2, <%= i %>)"> Ocupado
                         </label>
                     </div>
                 </div>
-                <!-- Agrega los demás recuadros de forma similar -->
-                <div class="recuadro" id="recuadro2">
-                    Espacio 2
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion2" value="1" onclick="marcarOpcion(1, 2)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion2" value="2" onclick="marcarOpcion(2, 2)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro3">
-                    Espacio 3
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion3" value="1" onclick="marcarOpcion(1, 3)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion3" value="2" onclick="marcarOpcion(2, 3)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro4">
-                    Espacio 4
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion4" value="1" onclick="marcarOpcion(1, 4)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion4" value="2" onclick="marcarOpcion(2, 4)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-                <!--salto de espacio -->
-                <div class="recuadro" id="recuadro5">
-                    Espacio 5
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion5" value="1" onclick="marcarOpcion(1, 5)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion5" value="2" onclick="marcarOpcion(2, 5)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro6">
-                    Espacio 6
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion6" value="1" onclick="marcarOpcion(1, 6)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion6" value="2" onclick="marcarOpcion(2, 6)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro7">
-                    Espacio 7
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion7" value="1" onclick="marcarOpcion(1, 7)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion7" value="2" onclick="marcarOpcion(2, 7)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro8">
-                    Espacio 8
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion8" value="1" onclick="marcarOpcion(1, 8)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion8" value="2" onclick="marcarOpcion(2, 8)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro9">
-                    Espacio 9
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion9" value="1" onclick="marcarOpcion(1, 9)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion9" value="2" onclick="marcarOpcion(2, 9)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro10">
-                    Espacio 10
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion10" value="1" onclick="marcarOpcion(1, 10)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion10" value="2" onclick="marcarOpcion(2, 10)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro11">
-                    Espacio 11
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion11" value="1" onclick="marcarOpcion(1, 11)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion11" value="2" onclick="marcarOpcion(2, 11)"> Ocupado
-                        </label>
-                    </div>
-                </div>
-
-                <div class="recuadro" id="recuadro12">
-                    Espacio 12
-                    <div class="opciones">
-                        <label>
-                            <input type="radio" name="opcion12" value="1" onclick="marcarOpcion(1, 12)"> Libre
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion12" value="2" onclick="marcarOpcion(2, 12)"> Ocupado
-                        </label>
-                    </div>
-                </div>
+                <% } %>
 
             </div>
         </div>
@@ -335,6 +210,8 @@
         // Aplica el nuevo estilo
         if (opcion === 1) recuadroSeleccionado.classList.add('opcion1');
         if (opcion === 2) recuadroSeleccionado.classList.add('opcion2');
+
+
     }
 </script>
 </body>

@@ -1,16 +1,15 @@
 package logica;
 
 import logica.Exception.RutException;
+import logica.Serializable.ParkingManager;
 import logica.Serializable.UsuarioManager;
 import logica.Serializable.Usuario;
-import logica.Serializable.parking;
-import logica.Serializable.parkingManager;
 
 import java.util.ArrayList;
 
 public class Sistema {
     private static ArrayList<Usuario>usuarios;
-    private static ArrayList<parking>espacios;
+    private static int[]espacios;
     private boolean[] plazas;
     private final int tarifaMinuto;
     private ArrayList<Cliente> clientes = new ArrayList<>();
@@ -22,7 +21,7 @@ public class Sistema {
         plazas = new boolean[10];
         tarifaMinuto = 10;
         this.usuarios=UsuarioManager.cargarUsuario();
-        this.espacios= parkingManager.obtenerEstacionamientos();
+        this.espacios= ParkingManager.obtenerEstacionamientos();//estacionamiento estado
     }
 
     public static Sistema getInstance() {
@@ -195,17 +194,25 @@ public class Sistema {
     }
 
 
-    //espacios
-    public boolean registrarEspacio(String[] espacio){
-        if(parkingManager.guardarEstacionamiento(espacio)){
-            return true;
-        }
-        parking nuevo=new parking(12);
-        espacios.add(nuevo);
-
-        parkingManager.guardarEstacionamiento(espacio);
-        return true;
+    public int[] cargarEstadosEspacios() {
+        return espacios;
     }
+
+
+    public void guardarEstadosEspacios(int[] nuevos) {
+        if (espacios != null) {
+            int[] estados = new int[nuevos.length];  // Creamos un arreglo de enteros de la misma longitud
+
+            for (int i = 0; i < nuevos.length; i++) {
+                estados[i] = nuevos[i];
+            }
+            // Guardamos los cambios en los estacionamientos (persistencia)
+            ParkingManager.guardarEstacionamientos(estados);
+        } else {
+            System.err.println("Error: No hay datos de espacios para guardar.");
+        }
+    }
+
 
 
 }
