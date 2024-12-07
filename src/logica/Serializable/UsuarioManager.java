@@ -29,12 +29,10 @@ public class UsuarioManager {
     }
 
 
-    // Cargar usuarios desde un archivo
     public static ArrayList<Usuario> cargarUsuario() {
         try {
             File archivo = new File(ARCHIVO_USUARIOS);
 
-            // Si el archivo no existe, crea uno vacío
             if (!archivo.exists()) {
                 archivo.getParentFile().mkdirs();
                 archivo.createNewFile();
@@ -43,7 +41,13 @@ public class UsuarioManager {
             }
 
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo))) {
-                return (ArrayList<Usuario>) ois.readObject();
+                Object objeto = ois.readObject();
+                if (objeto instanceof ArrayList<?>) {
+                    return (ArrayList<Usuario>) objeto;
+                } else {
+                    System.err.println("El archivo contiene un tipo de dato inesperado.");
+                    return new ArrayList<>();
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("Archivo no encontrado. Retornando una lista vacía.");
@@ -53,6 +57,7 @@ public class UsuarioManager {
             return new ArrayList<>();
         }
     }
+
 
     // Verificar si un usuario ya está registrado
     public static boolean esUsuarioRegistrado(ArrayList<Usuario> usuarios, String password) {
