@@ -78,7 +78,7 @@
             flex: 1 1 calc(20% - 10px); /* Cinco recuadros por fila */
             margin: 15px 15px;
             padding: 10px;
-            background-color: #ffffff;
+            background-color: rgb(195, 230, 203);
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -112,7 +112,7 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #218838;
+            background-color: #6ba66b;
         }
 
         button[type="button"] {
@@ -168,7 +168,6 @@
 <div class="fondo-desenfocado"></div>
 <div class="container">
     <h3>Disponibilidad estacionamiento</h3>
-    <form id="parkingForm" action="Svcuenta" method="post">
         <div class="contenedor-principal">
             <div class="bloque">
                 <!-- Repite el contenido de los recuadros aquí -->
@@ -176,7 +175,7 @@
                     Espacio 1
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion1" value="1" onclick="marcarOpcion(1, 1)"> Libre
+                            <input type="radio" name="opcion1" value="1" onclick="marcarOpcion(1, 1)" checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion1" value="2" onclick="marcarOpcion(2, 1)"> Ocupado
@@ -188,7 +187,7 @@
                     Espacio 2
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion2" value="1" onclick="marcarOpcion(1, 2)"> Libre
+                            <input type="radio" name="opcion2" value="1" onclick="marcarOpcion(1, 2)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion2" value="2" onclick="marcarOpcion(2, 2)"> Ocupado
@@ -200,7 +199,7 @@
                     Espacio 3
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion3" value="1" onclick="marcarOpcion(1, 3)"> Libre
+                            <input type="radio" name="opcion3" value="1" onclick="marcarOpcion(1, 3)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion3" value="2" onclick="marcarOpcion(2, 3)"> Ocupado
@@ -212,7 +211,7 @@
                     Espacio 4
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion4" value="1" onclick="marcarOpcion(1, 4)"> Libre
+                            <input type="radio" name="opcion4" value="1" onclick="marcarOpcion(1, 4)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion4" value="2" onclick="marcarOpcion(2, 4)"> Ocupado
@@ -224,7 +223,7 @@
                     Espacio 5
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion5" value="1" onclick="marcarOpcion(1, 5)"> Libre
+                            <input type="radio" name="opcion5" value="1" onclick="marcarOpcion(1, 5)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion5" value="2" onclick="marcarOpcion(2, 5)"> Ocupado
@@ -236,7 +235,7 @@
                     Espacio 6
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion6" value="1" onclick="marcarOpcion(1, 6)"> Libre
+                            <input type="radio" name="opcion6" value="1" onclick="marcarOpcion(1, 6)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion6" value="2" onclick="marcarOpcion(2, 6)"> Ocupado
@@ -248,7 +247,7 @@
                     Espacio 7
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion7" value="1" onclick="marcarOpcion(1, 7)"> Libre
+                            <input type="radio" name="opcion7" value="1" onclick="marcarOpcion(1, 7)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion7" value="2" onclick="marcarOpcion(2, 7)"> Ocupado
@@ -260,7 +259,7 @@
                     Espacio 8
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion8" value="1" onclick="marcarOpcion(1, 8)"> Libre
+                            <input type="radio" name="opcion8" value="1" onclick="marcarOpcion(1, 8)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion8" value="2" onclick="marcarOpcion(2, 8)"> Ocupado
@@ -272,7 +271,7 @@
                     Espacio 9
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion9" value="1" onclick="marcarOpcion(1, 9)"> Libre
+                            <input type="radio" name="opcion9" value="1" onclick="marcarOpcion(1, 9)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion9" value="2" onclick="marcarOpcion(2, 9)"> Ocupado
@@ -284,7 +283,7 @@
                     Espacio 10
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion10" value="1" onclick="marcarOpcion(1, 10)"> Libre
+                            <input type="radio" name="opcion10" value="1" onclick="marcarOpcion(1, 10)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion10" value="2" onclick="marcarOpcion(2, 10)"> Ocupado
@@ -296,7 +295,7 @@
                     Espacio 11
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion11" value="1" onclick="marcarOpcion(1, 11)"> Libre
+                            <input type="radio" name="opcion11" value="1" onclick="marcarOpcion(1, 11)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion11" value="2" onclick="marcarOpcion(2, 11)"> Ocupado
@@ -308,7 +307,7 @@
                     Espacio 12
                     <div class="opciones">
                         <label>
-                            <input type="radio" name="opcion12" value="1" onclick="marcarOpcion(1, 12)"> Libre
+                            <input type="radio" name="opcion12" value="1" onclick="marcarOpcion(1, 12)"checked> Libre
                         </label>
                         <label>
                             <input type="radio" name="opcion12" value="2" onclick="marcarOpcion(2, 12)"> Ocupado
@@ -318,11 +317,14 @@
 
             </div>
         </div>
-        <button type="submit">Guardar Datos</button>
+        <button type="submit">
+            <a href="estacionamiento.jsp">
+                Guardar Datos
+            </a>
+        </button>
         <button type="button">
             <a href="estacionamiento.jsp">Volver</a>
         </button>
-    </form>
 </div>
 
 <script>
