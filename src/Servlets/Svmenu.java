@@ -23,9 +23,7 @@ public class Svmenu extends HttpServlet {
             menu.put(carta[i], Integer.parseInt(req.getParameter(carta[i] + "Cantidad")));
 
         }
-
         for (String key : menu.keySet()) {
-            System.out.println(key + ", cantidad :" + menu.get(key));
             if (menu.get(key) > cantidad) {
                 cantidadExcede = true;
             }
@@ -46,9 +44,11 @@ public class Svmenu extends HttpServlet {
             return;
         }
         // Si todas las cantidades son válidas, continuar con el flujo normal
+        imprimir(menu);
         req.setAttribute("menu", menu);
         RequestDispatcher dispatcher = req.getRequestDispatcher("pedido.jsp");
         dispatcher.forward(req, resp);
+
 
 
     }
@@ -65,6 +65,13 @@ public class Svmenu extends HttpServlet {
             }
         }
         return true; // Si llega aquí, todos son iguales
+    }
+
+    public void imprimir(HashMap<String, Integer> map) {
+        System.out.println("menú");
+        for (String key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
     }
 
 
