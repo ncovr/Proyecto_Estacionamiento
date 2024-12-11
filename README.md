@@ -6,6 +6,8 @@ Extraerlo y dejarlo en una carpeta nueva llamada "tomcat"
 
 Usando Intellij para clonar el proyecto.
 
+Debe utilizar la rama "Frontend_Serializable"
+
 luego revisar ciertas cosas dentro del proyecto ya clonado
 
 Dependencias: 
@@ -29,6 +31,8 @@ Settings>Tomcat Server >+ *escoger la carpeta antes creada llamada "tomcat" y se
 luego seleccionar apply y ok
 
 ahora ejercutar "Current File" con el archivo index.jsp abierto debe aparecer como se adjunta en la imagen
+
+Debido a que se implemento serializable, el archivo se crea y se guarda automaticamente en C:\Users\(...)\.SmartTomcat\Proyecto_Estacionamiento\Proyecto_Estacionamiento\src\logica\Serializable\usuarios.txt
 
 
 ![2024-12-03_12h13_09](https://github.com/user-attachments/assets/b147aaaf-0316-4376-afc2-5080b6b8f9fd)
