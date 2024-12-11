@@ -25,6 +25,7 @@ public class Svcrearcuenta extends HttpServlet {
             throw new RuntimeException(e);
         }
         if(sistema.validarUsuario(rut)){
+
             req.setAttribute("errorUsername", "Error al registrar la cuenta. La cuenta ya existe.");
             req.getRequestDispatcher("crearCuenta.jsp").forward(req, resp);
             System.out.println("usuario ya esta registrado");
