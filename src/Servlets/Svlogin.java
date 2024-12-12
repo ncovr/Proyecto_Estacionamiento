@@ -25,7 +25,7 @@ public class Svlogin extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        if (run && sistema.validarUsuario(pass)) {
+        if (run && sistema.validarUsuario(pass,rut)) {
             resp.sendRedirect("menuPrincipal.jsp");
             System.out.println("usuario ya esta registrado");
 

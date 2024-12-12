@@ -34,7 +34,6 @@ ahora ejercutar "Current File" con el archivo index.jsp abierto debe aparecer co
 
 Debido a que se implemento serializable, el archivo se crea y se guarda automaticamente en C:\Users\(...)\.SmartTomcat\Proyecto_Estacionamiento\Proyecto_Estacionamiento\src\logica\Serializable\usuarios.txt
 
-
 ![2024-12-03_12h13_09](https://github.com/user-attachments/assets/b147aaaf-0316-4376-afc2-5080b6b8f9fd)
 
 

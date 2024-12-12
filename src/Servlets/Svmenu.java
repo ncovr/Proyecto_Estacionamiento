@@ -20,9 +20,21 @@ public class Svmenu extends HttpServlet {
         boolean cantidadExcede = false;
 
         for (int i = 0; i < carta.length; i++) {
-            menu.put(carta[i], Integer.parseInt(req.getParameter(carta[i] + "Cantidad")));
-
+            String parametro = req.getParameter(carta[i] + "Cantidad");
+            if (parametro != null && !parametro.isEmpty()) {
+                try {
+                    int a = Integer.parseInt(parametro);
+                    menu.put(carta[i], a);
+                } catch (NumberFormatException e) {
+                    // Maneja el caso en que el parámetro no pueda ser parseado a un entero
+                    System.out.println("Error al parsear el parámetro " + carta[i] + "Cantidad");
+                }
+            } else {
+                // Maneja el caso en que el parámetro sea null o vacío
+                System.out.println("El parámetro " + carta[i] + "Cantidad es null o vacío");
+            }
         }
+
         for (String key : menu.keySet()) {
             if (menu.get(key) > cantidad) {
                 cantidadExcede = true;
@@ -35,9 +47,9 @@ public class Svmenu extends HttpServlet {
             return; // Terminar la ejecución del servlet
         }
         //revision si pidio cero elementos del menu
-        boolean isCero = false;
+        boolean isCero;
         isCero = mismoValor(menu);
-        int base=menu.get("completo");
+        int base = menu.get("completo");
         if (isCero && base == 0) {
             req.setAttribute("errorCantidad", "Erro al registar. Las cantidad no pueden ser cero");
             req.getRequestDispatcher("menuComida.jsp").forward(req, resp);
@@ -50,8 +62,8 @@ public class Svmenu extends HttpServlet {
         dispatcher.forward(req, resp);
 
 
-
     }
+
 
     public static <K, V> boolean mismoValor(HashMap<K, V> map) {
         if (map.isEmpty()) return true; // Si está vacío, consideramos que son "iguales"

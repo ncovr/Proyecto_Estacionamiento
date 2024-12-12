@@ -60,15 +60,19 @@ public class UsuarioManager {
 
 
     // Verificar si un usuario ya está registrado
-    public static boolean esUsuarioRegistrado(ArrayList<Usuario> usuarios, String password) {
-        if (usuarios == null || password == null) {
+    public static boolean esUsuarioRegistrado(ArrayList<Usuario> usuarios, String password, String user) {
+        if (usuarios == null || password == null || user == null) {
             throw new IllegalArgumentException("La lista de usuarios o la contraseña no pueden ser nulas.");
         }
 
         for (Usuario usuario : usuarios) {
+            if(usuario.getRun().equals(user)){
+                return true;
+            }
             if (usuario.getPassword().equals(password)) {
                 return true;
             }
+
         }
         return false;
     }

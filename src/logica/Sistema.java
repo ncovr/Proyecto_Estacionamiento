@@ -173,7 +173,7 @@ public class Sistema {
 
     // Registrar un nuevo usuario
     public boolean registrarUsuario(String run, String password) {
-        if (UsuarioManager.esUsuarioRegistrado(usuarios, password)) {
+        if (UsuarioManager.esUsuarioRegistrado(usuarios, password,run)) {
             return false; // El usuario ya está registrado
         }
 
@@ -186,8 +186,8 @@ public class Sistema {
     }
 
     // Validar un usuario
-    public boolean validarUsuario(String password) {
-        return UsuarioManager.esUsuarioRegistrado(usuarios, password);
+    public boolean validarUsuario(String password, String user) {
+        return UsuarioManager.esUsuarioRegistrado(usuarios, password, user);
     }
 
 
